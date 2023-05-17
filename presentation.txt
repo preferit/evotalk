@@ -3,3 +3,29 @@ Go: Project structure; design for change, avoid a deadend
 From the simplest "func main" to a large service. What choices to
 consider when your project grows and how to keep it on track for
 future changes.
+
+We begin with hello world and then evolve that example into any
+direction. Along the way depending on the choices we make the design
+of our project will change. I'll refer to directory layout, not as
+structure but as design.
+
+Let's kick off our project; which we at this point do not know what it
+will do. We'll name it "rebel" and use the repository domain
+"github.com/preferit/rebel".
+
+                TODO $ cd ex/01; tree
+
+
+We choose to create a command, ie. package main. The implications for
+our ability to evolve
+
+1. You Cannot share any logic within it with others (including
+yourself), Go disallows the import of main packages
+
+2. API documentation is hidden when using e.g. go doc, as a result of
+(1)
+
+                TODO screenshot of godoc ex/01
+
+This is a starting point; you have no intention to share any logic
+only the command as such which is ok.
