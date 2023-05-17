@@ -1,0 +1,5 @@
+Go: Project structure; design for change, avoid a deadend
+
+From the simplest "func main" to a large service. What choices to
+consider when your project grows and how to keep it on track for
+future changes.
