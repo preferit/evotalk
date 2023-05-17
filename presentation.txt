@@ -14,7 +14,7 @@ will do. We'll name it "rebel" and use the repository domain
 "github.com/preferit/rebel".
 
                 TODO $ cd ex/01; tree
-
+                TODO $ cat ex/01/main.go
 
 We choose to create a command, ie. package main. The implications for
 our ability to evolve
@@ -28,4 +28,28 @@ yourself), Go disallows the import of main packages
                 TODO screenshot of godoc ex/01
 
 This is a starting point; you have no intention to share any logic
-only the command as such which is ok.
+only the command as such which is ok. You are happy and code along
+the nice feature of randomizing rebelious statements.
+
+                TODO $ cat ex/02/main.go
+
+At this point your coworkers Max and Lisa sees the work and you end up
+in a discussion;
+
+- Max:  Would be nice to see that phrase when I login as the message of the day
+- you:  Easy peasy, just go install ... and run it.
+- Lisa: Can we include it on the intranet?
+- you:  Hmm.. (you pause and start thinking)
+- you:  Not really; you could use the binary, but it would be slow with all the
+        traffic we have
+
+Here you are faced with a decision on how to share the logic of
+generating a random rebelious statement.
+
+1. Redesign the logic into as an importable package or
+2. Write a small service with an API.
+3. Share the data only and let them figure it out
+
+1 and 2 both will require some effort though as the consumers are both
+internal (1) seems more fitting and much easier to do. The third
+option, though viable, does not help this presentation :-).
