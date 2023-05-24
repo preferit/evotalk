@@ -80,3 +80,38 @@ when you run your commands.
 
 	       TODO $ cat ex/05/main.go
 
+Some time passes and Lisas swings by your office asking if you could
+implement something that doesn't repeat the same phrase every day?
+But you just did, how do you now share it with Lisa?  At this point
+you'll realize that the initial redesign with the added phrase
+package, may need to changed and your own code updated aswell. This is
+one of those deadends where you have to turn around and find another
+path. We can explore ways to use the current design, e.g. put some
+caching mechanism into the phrase package, but that seems out of
+place.  Also the caching for the command invocation locally on your
+computer may differ from what is available on the intranet site, you
+don't know at this point.  If we backtrack to the time where Max and
+Lisa came onboard, could we have taken a different route that would
+avoid this scenario?
+
+Let's go through our reasoning and see if we can find the culprit
+before trying to solve it. Lisa and Max where not very specific about
+their needs just that they wanted to show a random phrase in different
+ways. We choose to extract the phrase generating logic for Lisa to use
+and told Max to use the command. What Lisa wants now is the logic that
+is found in the command, but her current dependency is elsewhere.
+
+Looking at the code more closely we placed func Shout inside the
+phrase package, why? phrases don't shout, rebels do. So if we want to
+keep func Shout in the package rebel And we want to share it with
+Lisa, how do we solve that?
+
+Move command, keep domain logic.
+
+            TODO $ tree ex/06/
+
+This design, is as effortless as the first attempt at the decision
+point, but it makes it easier to evolve the rebel logic. It also
+forces you to design rebel features in such a way that they may be
+used by Lisa as well as Max.
+
