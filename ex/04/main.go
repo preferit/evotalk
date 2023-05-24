@@ -2,6 +2,7 @@
 package main
 
 import (
+	"fmt"
 	"os"
 
 	"github.com/preferit/rebel/phrase"
@@ -9,4 +10,5 @@ import (
 
 func main() {
 	phrase.Shout(os.Stdout)
+	fmt.Println()
 }

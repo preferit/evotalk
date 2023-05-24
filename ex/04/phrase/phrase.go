@@ -8,11 +8,11 @@ import (
 
 // Shout writes a statement to os.Stdout
 func Shout(w io.Writer) {
-	fmt.Fprintln(w, RandValue(phrases))
+	fmt.Fprint(w, randValue(phrases))
 }
 
-// RandValue returns a random element of the given slice or the zero value.
-func RandValue[T any](slice []T) (v T) {
+// randValue returns a random element of the given slice or the zero value.
+func randValue[T any](slice []T) (v T) {
 	if len(slice) == 0 {
 		return
 	}

@@ -69,5 +69,7 @@ they might get affected. Our goal is to be able to make changes as
 freely as possible without affecting the stakeholders. Before we
 release these changes can we improve the design?
 
+               TODO $ tree ex/04
+	       TODO $ cat ex/04/phrase/*.go
 
 
