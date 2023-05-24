@@ -72,4 +72,11 @@ release these changes can we improve the design?
                TODO $ tree ex/04
 	       TODO $ cat ex/04/phrase/*.go
 
+Your use case and Maxs are somewhat aligned as you both use the rebel
+logic of shouting through the rebel command. You quickly notice that
+the same phrase appears over and over and add a the feature of keeping
+last shouted phrase in a temporary file to minimize the repetition
+when you run your commands.
+
+	       TODO $ cat ex/05/main.go
 
