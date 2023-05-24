@@ -56,5 +56,18 @@ easier to do. The third option, though viable, does not help this
 presentation :-).
 
 How do you convert the current state, a command, into an importable
-package while also keeping the command.
+package while also keeping the command. First attempt; keep command in
+root and create a package with logic to generate the phrases.
+
+               TODO $ tree ex/03
+	       TODO $ cat ex/03/phrase/*.go
+
+With a little refactoring everyone can benefit from your rebel
+statement generator. What are the implications of our current design?
+We now have multiple stakeholders depending on it and going forward
+they might get affected. Our goal is to be able to make changes as
+freely as possible without affecting the stakeholders. Before we
+release these changes can we improve the design?
+
+
 
