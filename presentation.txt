@@ -115,3 +115,9 @@ point, but it makes it easier to evolve the rebel logic. It also
 forces you to design rebel features in such a way that they may be
 used by Lisa as well as Max.
 
+The project will grow and at some Point Lisa will come by and says
+they are switching languages for the intranet implementation but they
+really want to have access to the logic of generating rebelious
+statements, could you write a service that exposes it?
+
+
