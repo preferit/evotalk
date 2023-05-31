@@ -2,15 +2,8 @@ package evotalk
 
 import (
 	_ "embed"
-	"fmt"
-	"log"
-	"os"
-	"os/exec"
-	"regexp"
-	"strings"
 
 	. "github.com/gregoryv/web"
-	"github.com/gregoryv/web/files"
 )
 
 func Presentation() *deck {
@@ -128,7 +121,17 @@ yourself), Go disallows the import of main packages`),
         attempt; keep command in root and create a package with logic
         to generate the phrases.`),
 
-		shell("$ tree rebel", "ex03.tree"),
+		Table(
+			Tr(
+				Td(
+					shell("$ tree rebel", "ex03.tree"),
+					load("../ex/03/main.go"),
+				),
+				Td(
+					load("../ex/03/phrase/phrase.go"),
+				),
+			),
+		),
 	)
 	return d
 }
