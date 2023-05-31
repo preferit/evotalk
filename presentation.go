@@ -385,5 +385,20 @@ yourself), Go disallows the import of main packages`),
 		),
 	)
 
+	d.Slide(
+		H2("Which way to go?"),
+
+		P(`Well to keep our design easy to evolve we want`),
+
+		Ul(
+			Li(`low complexity`),
+			Li(`clear package responsibilities`),
+		),
+
+		P(`This rules out the first three options, however we might
+		consider having multiple commands a higher complexity than one
+		initially, which would make option three viable aswell. Which
+		one would you go for?`),
+	)
 	return d
 }
