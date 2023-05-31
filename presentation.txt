@@ -1,4 +1,20 @@
-Go: Project structure; design for change, avoid a deadend
+.he ''Design for change, avoid a deadend''
+.fo 'v0.1.0'%' \" footer 'left'middle'right'
+.tp \" title page
+.sp 2i
+.(l C
+.ps 20
+.b "Go: Design for change, avoid a deadend"
+.sp
+.ps 12
+by
+.sp
+.ft U-TR
+Gregory Vinčić \" requires -Dutf-8
+.)l
+.
+.ap
+.bp \" -----------------------------------------------------
 
 From the simplest "func main" to a large service. What choices to
 consider when your project grows and how to keep it on track for
