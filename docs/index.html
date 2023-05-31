@@ -178,6 +178,7 @@ color: darkgreen;
 <li><a href="#5">5</a></li>
 <li><a href="#6">6</a></li>
 <li><a href="#7">7</a></li>
+<li><a href="#8">8</a></li>
 </ul>
 </nav>
 </div>
@@ -201,6 +202,7 @@ but as design.</em>
 <li><a href="#5">5</a></li>
 <li><a href="#6">6</a></li>
 <li><a href="#7">7</a></li>
+<li><a href="#8">8</a></li>
 </ul>
 </nav>
 </div>
@@ -246,6 +248,7 @@ yourself), Go disallows the import of main packages</li>
 <li><a href="#5">5</a></li>
 <li><a href="#6">6</a></li>
 <li><a href="#7">7</a></li>
+<li><a href="#8">8</a></li>
 </ul>
 </nav>
 </div>
@@ -306,6 +309,7 @@ yourself), Go disallows the import of main packages</li>
 <li><a href="#5">5</a></li>
 <li><a href="#6">6</a></li>
 <li><a href="#7">7</a></li>
+<li><a href="#8">8</a></li>
 </ul>
 </nav>
 </div>
@@ -342,6 +346,7 @@ yourself), Go disallows the import of main packages</li>
 <li class="current"><a href="#5">5</a></li>
 <li><a href="#6">6</a></li>
 <li><a href="#7">7</a></li>
+<li><a href="#8">8</a></li>
 </ul>
 </nav>
 </div>
@@ -411,6 +416,7 @@ yourself), Go disallows the import of main packages</li>
 <li><a href="#5">5</a></li>
 <li class="current"><a href="#6">6</a></li>
 <li><a href="#7">7</a></li>
+<li><a href="#8">8</a></li>
 </ul>
 </nav>
 </div>
@@ -484,6 +490,100 @@ yourself), Go disallows the import of main packages</li>
 <li><a href="#5">5</a></li>
 <li><a href="#6">6</a></li>
 <li class="current"><a href="#7">7</a></li>
+<li><a href="#8">8</a></li>
+</ul>
+</nav>
+</div>
+<div class="slide" id="8"><header><h2>Fix the repetition when used as a command</h2>
+</header>
+<div class="content"><table>
+<tr><td><pre class="shell dark">$ tree rebel<br/>rebel
+├── go.mod
+├── main.go
+└── phrase
+    ├── phrase.go
+    └── phrase_test.go
+
+1 directory, 4 files
+</pre><div class="srcfile"><pre><code><span class=line><i>  1</i> <span class="comment">// Command rebel generates rebelious statement.</span></span>
+<span class=line><i>  2</i> package main</span>
+<span class=line><i>  3</i> </span>
+<span class=line><i>  4</i> <span class="keyword">import</span> (</span>
+<span class=line><i>  5</i>     "bytes"</span>
+<span class=line><i>  6</i>     "fmt"</span>
+<span class=line><i>  7</i>     "os"</span>
+<span class=line><i>  8</i> </span>
+<span class=line><i>  9</i>     "github.com/preferit/rebel/phrase"</span>
+<span class=line><i> 10</i> )</span>
+<span class=line><i> 11</i> </span>
+<span class=line><i> 12</i> <span class="keyword">func</span> main() {</span>
+<span class=line><i> 13</i>     <span class="comment">// cache of last statement</span></span>
+<span class=line><i> 14</i>     cache := "/tmp/lastphrase"</span>
+<span class=line><i> 15</i>     last, _ := os.ReadFile(cache)</span>
+<span class=line><i> 16</i>     <span class="comment">// ignore error, we don't care</span></span>
+<span class=line><i> 17</i>     <span class="keyword">var</span> buf <span class="type">bytes.Buffer</span></span>
+<span class=line><i> 18</i>     <span class="keyword">for</span> {</span>
+<span class=line><i> 19</i>         buf.Reset()</span>
+<span class=line><i> 20</i>         phrase.Shout(&buf)</span>
+<span class=line><i> 21</i>         <span class="keyword">if</span> bytes.Equal(last, buf.Bytes()) {</span>
+<span class=line><i> 22</i>             continue</span>
+<span class=line><i> 23</i>         }</span>
+<span class=line><i> 24</i>         break</span>
+<span class=line><i> 25</i>     }</span>
+<span class=line><i> 26</i>     <span class="comment">// save</span></span>
+<span class=line><i> 27</i>     _ = os.WriteFile(cache, buf.Bytes(), 0644)</span>
+<span class=line><i> 28</i>     fmt.Println(buf.String())</span>
+<span class=line><i> 29</i> }</span>
+<span class=line><i> 30</i> </span></code></pre></div>
+</td><td><p>What are the implications of our current design?</p>
+<ul>
+<li>Lisa can import it with <code>import github.com/preferit/rebel/phrase</code></li>
+<li>Max can install it simply with <code>go install github.com/preferit/rebel@latest</code></li>
+</ul>
+<p>It feels ok, current needs are met. You and Max quickly
+        notice that the same phrase appears over and over and add a
+        the feature of keeping last shouted phrase in a temporary file
+        to minimize the repetition when you run your commands.</p>
+<div class="srcfile"><pre><code><span class=line><i>  1</i> <span class="keyword">package</span> phrase</span>
+<span class=line><i>  2</i> </span>
+<span class=line><i>  3</i> <span class="keyword">import</span> (</span>
+<span class=line><i>  4</i>     "fmt"</span>
+<span class=line><i>  5</i>     "io"</span>
+<span class=line><i>  6</i>     "math/rand"</span>
+<span class=line><i>  7</i> )</span>
+<span class=line><i>  8</i> </span>
+<span class=line><i>  9</i> <span class="comment">// Shout writes a statement to <span class="type">os.Stdout</span></span></span>
+<span class=line><i> 10</i> <span class="keyword">func</span> Shout(w <span class="type">io.Writer</span>) {</span>
+<span class=line><i> 11</i>     fmt.Fprint(w, randValue(phrases))</span>
+<span class=line><i> 12</i> }</span>
+<span class=line><i> 13</i> </span>
+<span class=line><i> 14</i> <span class="comment">// randValue returns a random element of the given slice or the zero value.</span></span>
+<span class=line><i> 15</i> <span class="keyword">func</span> randValue[T any](slice []T) (v T) {</span>
+<span class=line><i> 16</i>     <span class="keyword">if</span> len(slice) == 0 {</span>
+<span class=line><i> 17</i>         <span class="keyword">return</span></span>
+<span class=line><i> 18</i>     }</span>
+<span class=line><i> 19</i>     i := rand.Intn(len(slice))</span>
+<span class=line><i> 20</i>     <span class="keyword">return</span> slice[i]</span>
+<span class=line><i> 21</i> }</span>
+<span class=line><i> 22</i> </span>
+<span class=line><i> 23</i> <span class="keyword">var</span> phrases = []string{</span>
+<span class=line><i> 24</i>     "We are Rebelz!",</span>
+<span class=line><i> 25</i>     "You may take our lives, but you will never take our freeeedooooom!",</span>
+<span class=line><i> 26</i>     "We ain't gonna take it, No!, we ain't gonna take it!",</span>
+<span class=line><i> 27</i> }</span>
+<span class=line><i> 28</i> </span></code></pre></div>
+</td></tr>
+</table>
+</div>
+<nav><ul>
+<li><a href="#1">1</a></li>
+<li><a href="#2">2</a></li>
+<li><a href="#3">3</a></li>
+<li><a href="#4">4</a></li>
+<li><a href="#5">5</a></li>
+<li><a href="#6">6</a></li>
+<li><a href="#7">7</a></li>
+<li class="current"><a href="#8">8</a></li>
 </ul>
 </nav>
 </div>

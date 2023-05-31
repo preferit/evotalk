@@ -155,5 +155,37 @@ yourself), Go disallows the import of main packages`),
 			),
 		),
 	)
+
+	d.Slide(
+		H2("Fix the repetition when used as a command"),
+
+		Table(
+			Tr(
+				Td(
+
+					shell("$ tree rebel", "ex05.tree"),
+					load("../ex/05/main.go"),
+				),
+				Td(
+					P(`What are the implications of our current design?`),
+
+					Ul(
+						Li("Lisa can import it with ",
+							Code("import github.com/preferit/rebel/phrase"),
+						),
+						Li("Max can install it simply with ",
+							Code("go install github.com/preferit/rebel@latest"),
+						),
+					),
+					P(`It feels ok, current needs are met. You and Max quickly
+        notice that the same phrase appears over and over and add a
+        the feature of keeping last shouted phrase in a temporary file
+        to minimize the repetition when you run your commands.`),
+					load("../ex/05/phrase/phrase.go"),
+				),
+			),
+		),
+	)
+
 	return d
 }
