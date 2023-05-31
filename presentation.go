@@ -208,5 +208,38 @@ yourself), Go disallows the import of main packages`),
         we have taken a different route that would avoid this
         scenario?`),
 	)
+
+	d.Slide(
+		H2("What did we do wrong?"),
+
+		P(`Let's go through our reasoning and see if we can find the
+        culprit before trying to solve it. Lisa and Max where not very
+        specific about their needs just that they wanted to show a
+        random phrase in different ways, in the terminal and on a
+        webpage. We choose to extract the phrase generating logic for
+        Lisa to use and told Max to use the command. Then we added
+        more logic in the command, because it was You and Max that saw
+        the problem. What Lisa wants now is the logic that is found in
+        the command, but her current dependency is elsewhere.`),
+
+		P(`Looking at the code more closely we placed func Shout
+        inside the phrase package, why? <em>phrases don't shout, rebels
+        do</em>. So if we want to keep func Shout in the package rebel And
+        we want to share it with Lisa, how do we solve that?`),
+
+		Table(
+			Tr(
+				Td(
+					shell("$ tree rebel", "ex04.tree"),
+					load("../ex/04/main.go"),
+				),
+				Td(
+					load("../ex/04/phrase/phrase.go"),
+				),
+			),
+		),
+
+		B(`Move command, keep domain logic.`),
+	)
 	return d
 }
