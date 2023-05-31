@@ -30,19 +30,22 @@ func Presentation() *deck {
 	)
 
 	d.Slide(
-		H2("Content"),
-		Br(Attr("clear", "all")),
+		H2("Story"),
+		Img(Src("people.png")),
 
-		P(`Follow along by cloning the examples with `),
-
-		Pre(Class("shell dark"),
+		P(mustLoad("sl01.txt")),
+		/*Pre(Class("shell dark"),
 			"$ git clone git@github.com:preferit/cotalk.git\n",
 			"$ cd cotalk",
-		),
+		),*/
 	)
 
 	return d
 }
+
+// ----------------------------------------
+// helpers
+// ----------------------------------------
 
 func load(src string) *Element {
 	v := mustLoad(src)
