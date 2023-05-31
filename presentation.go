@@ -302,7 +302,6 @@ yourself), Go disallows the import of main packages`),
 	d.Slide(
 		H2("Add the service logic in existing command"),
 		shell("$ tree rebel", "ex07_1.tree"),
-
 		Table(
 			Tr(
 				Th("Pros"), Th("Cons"),
@@ -325,7 +324,6 @@ yourself), Go disallows the import of main packages`),
 	d.Slide(
 		H2("Add the service logic in package rebel"),
 		shell("$ tree rebel", "ex07_2.tree"),
-
 		Table(
 			Tr(
 				Th("Pros"), Th("Cons"),
@@ -343,6 +341,46 @@ yourself), Go disallows the import of main packages`),
 			),
 		),
 	)
+
+	d.Slide(
+		H2("Add the service logic in package rebel/service"),
+		shell("$ tree rebel", "ex07_3.tree"),
+		Table(
+			Tr(
+				Th("Pros"), Th("Cons"),
+			),
+			Td(
+				Ul(
+					Li(`Package rebel remains untouched`),
+					Li(`API logic separated from domain logic`),
+				),
+			),
+			Td(
+				Ul(
+					Li(`Existing command increases in complexity that Max does not need`),
+				),
+			),
+		),
+	)
+	/*
+		d.Slide(
+			H2(""),
+			shell("$ tree rebel", "ex07_2.tree"),
+			Table(
+				Tr(
+					Th("Pros"), Th("Cons"),
+				),
+				Td(
+					Ul(
+						),
+				),
+				Td(
+					Ul(
+
+					),
+				),
+			),
+		)*/
 
 	return d
 }
