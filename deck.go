@@ -160,9 +160,7 @@ type navbar struct {
 func (b *navbar) next() *Element {
 	ul := Ul()
 	groupDivider := map[int]bool{
-		9:  true,
-		13: true, // concurrent
-		17: true, // channels
+		40: true,
 	}
 
 	for i := 0; i < b.max; i++ {

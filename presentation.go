@@ -187,5 +187,26 @@ yourself), Go disallows the import of main packages`),
 		),
 	)
 
+	d.Slide(
+		H2("The first deadend"),
+
+		P(`Some time passes and Lisas swings by your office asking if
+        you could implement something that doesn't repeat the same
+        phrase every day?  But you just did, how do you now share it
+        with Lisa?  At this point you'll realize that the initial
+        redesign with the added phrase package, may need to changed
+        and your own code updated aswell. This is one of those
+        deadends where you have to turn around and find another
+        path.`),
+		Img(Src("firstdeadend.png")),
+		P(`We can explore ways to use the current design, e.g. put
+        some caching mechanism into the phrase package, but that seems
+        out of place.  Also the caching for the command invocation
+        locally on your computer may differ from what is available on
+        the intranet site, you don't know at this point.  If we
+        backtrack to the time where Max and Lisa came onboard, could
+        we have taken a different route that would avoid this
+        scenario?`),
+	)
 	return d
 }
