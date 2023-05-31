@@ -1,0 +1,12 @@
+Let's kick off our project. We'll name it "rebel" and use the repository domain
+"github.com/preferit/rebel".
+
+We choose to create a command, ie. package main. The implications for
+our ability to evolve
+
+<ol>
+<li>You Cannot share any logic within it with others (including
+yourself), Go disallows the import of main packages</li>
+<li>API documentation is hidden when using e.g. go doc, as a result of
+(1)</li>
+</ol>

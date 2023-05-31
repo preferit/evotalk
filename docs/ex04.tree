@@ -1,0 +1,8 @@
+rebel
+├── go.mod
+├── main.go
+└── phrase
+    ├── phrase.go
+    └── phrase_test.go
+
+1 directory, 4 files
