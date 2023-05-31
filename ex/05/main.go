@@ -27,4 +27,3 @@ func main() {
 	_ = os.WriteFile(cache, buf.Bytes(), 0644)
 	fmt.Println(buf.String())
 }
-

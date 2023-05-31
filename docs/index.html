@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<title>Go; Design for change</title>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<style>@import url('https://fonts.googleapis.com/css?family=Inconsolata|Source+Sans+Pro');
+html, body {
+font-family: 'Source Sans Pro', sans-serif;
+margin: 0 0;
+padding: 0 0;
+}
+.slide {
+margin: 0 0;
+padding: 0 0;
+text-align: center;
+height: 100vh;
+}
+.slide header {
+display: block;
+border: 1px solid #cde9e9;
+margin: 0 0;
+background-color: #cde9e9;
+vertical-align: center;
+height: 10%;
+}
+.slide .content {
+margin: 0 0;
+padding: 1% 1%;
+height: 80%;
+overflow: auto;
+}
+.slide ul, p, pre {
+text-align: left;
+}
+.slide nav {
+display: block;
+margin: 0 0;
+padding: 0 0;
+text-align: center;
+clear: both;
+width: 100%;
+height: 5%;
+}
+.slide nav ul {
+list-style-type: none;
+margin: 0 0;
+padding: 0 0;
+text-align: center;
+}
+.slide nav ul li {
+margin: 0 1px;
+display: inline;
+}
+.slide nav ul li.current a, .slide nav ul li:hover a {
+background-color: #e2e2e2;
+border-radius: 5px;
+}
+nav a:link, nav a:visited {
+color: #727272;
+padding: 3px 5px;
+text-decoration: none;
+cursor: pointer;
+}
+a:link, a:visited {
+color: #007d9c;
+text-decoration: none;
+}
+a:hover {
+text-decoration: underline;
+}
+.header {
+width: 100%;
+border-bottom: 1px solid #727272;
+text-align: right;
+margin-top: -2em;
+margin-bottom: 1em;
+}
+h1, h2, h3 {
+text-align: center;
+}
+.twocolumn {
+width: 100%;
+}
+.srcfile {
+margin-top: 1.6em;
+margin-bottom: 1.6em;
+background-image: url("printout-whole.png");
+background-repeat: repeat-y;
+padding-left: 36px;
+background-color: #fafafa;
+tab-size: 4;
+-moz-tab-size: 4;
+min-width: 35vw;
+}
+.srcfile code {
+padding: .6em 0 2vh 0;
+background-image: url("printout-whole.png");
+background-repeat: repeat-y;
+background-position: right top;
+display: block;
+text-align: left;
+font-family: Inconsolata;
+overflow: wrap;
+}
+.srcfile code .line {
+display: block;
+width: 98%;
+clear: both;
+margin-bottom: -1.5vh;
+}
+.srcfile code span:hover {
+background-color: #b4eeb4;
+}
+.srcfile code i {
+font-style: normal;
+color: #a2a2a2;
+}
+li.h3 {
+margin-left: 2em;
+}
+.shell {
+padding: 1em;
+border-radius: 10px;
+min-width: 40vw;
+overflow: wrap;
+}
+.dark {
+background-color: #2e2e34;
+color: aliceblue;
+}
+.light {
+background-color: #ffffff;
+color: #3b2616;
+}
+img.center {
+display: block;
+margin-left: auto;
+margin-right: auto;
+}
+img.left {
+float: left;
+margin-right: 2em;
+}
+.group {
+text-align: left;
+margin-right: 3em;
+}
+.group:first-child {
+margin-left: 5vw;
+}
+td {
+vertical-align: top;
+}
+td:nth-child(2) {
+padding-left: 2em;
+}
+.keyword {
+color: darkviolet;
+}
+.type {
+color: dodgerblue;
+}
+.comment, .comment>span {
+color: darkgreen;
+}
+</style>
+</head>
+<body>
+<div class="slide" id="1"><header><h2>Go; Design for change</h2>
+</header>
+<div class="content"><a href="#2"><img src="cotalk.png"/></a><br/><br/><br/><span>Gregory Vinčić, 2023</span><br/><br/><br/></div>
+<nav><ul>
+<li class="current"><a href="#1">1</a></li>
+<li><a href="#2">2</a></li>
+</ul>
+</nav>
+</div>
+<div class="slide" id="2"><header><h2>Content</h2>
+</header>
+<div class="content"><table>
+<tr><td><ul class="group">
+<li>background and history</li>
+<li>goroutines</li>
+<li>channels</li>
+<li>package context</li>
+<li>package sync </li>
+<li>go test bench</li>
+</ul>
+</td><td><ul class="group">
+<li>problem definition</li>
+<li>letters challenge</li>
+<li>sequential solution</li>
+</ul>
+</td><td><ul class="group">
+<li>concurrent solution</li>
+<li>fixing bugs</li>
+</ul>
+</td><td><ul class="group">
+<li>using channels</li>
+<li>sync and interrupt</li>
+<li>compare performance</li>
+</ul>
+</td></tr>
+</table>
+<br clear="all"/><p>Follow along by cloning the examples with </p>
+<pre class="shell dark">$ git clone git@github.com:preferit/cotalk.git
+$ cd cotalk</pre></div>
+<nav><ul>
+<li><a href="#1">1</a></li>
+<li class="current"><a href="#2">2</a></li>
+</ul>
+</nav>
+</div>
+<script>function enhance() {
+    // if there is no hash, start with the first slide
+    var hash = window.location.hash;
+    if (hash == "") {
+	window.location += "#1"
+	return
+    }
+
+    // handle clicks on slide changes
+    window.onhashchange = toggleSlide;
+
+    hash = hash.substring(1) // ignore the #
+    var slides = document.getElementsByClassName("slide");
+    for (var i = 0; i < slides.length; i++) {
+	var s = slides.item(i);
+
+	// hide all but the hashed one	
+	if (s.id != hash) {
+	    s.style.display = 'none';
+	} else {
+	    s.style.diplay = 'block';
+	}
+    }
+}
+
+var currentHash = window.location.hash;
+
+function toggleSlide() {
+    var c = document.getElementById(currentHash.substring(1));
+    c.style.display = 'none';
+    var n = document.getElementById(window.location.hash.substring(1))
+    n.style.display = 'block';
+    currentHash = window.location.hash;
+}
+
+
+
+enhance()
+</script>
+</body>
+</html>
