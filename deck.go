@@ -319,6 +319,9 @@ func theme() *CSS {
 		"min-width: 40vw",
 		"overflow: wrap",
 	)
+	css.Style(".columns .shell",
+		"min-width: auto",
+	)
 	css.Style(".dark",
 		"background-color: #2e2e34",
 		"color: aliceblue",

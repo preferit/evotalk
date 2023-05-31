@@ -125,6 +125,9 @@ border-radius: 10px;
 min-width: 40vw;
 overflow: wrap;
 }
+.columns .shell {
+min-width: auto;
+}
 .dark {
 background-color: #2e2e34;
 color: aliceblue;
@@ -182,6 +185,7 @@ color: darkgreen;
 <li><a href="#9">9</a></li>
 <li><a href="#10">10</a></li>
 <li><a href="#11">11</a></li>
+<li><a href="#12">12</a></li>
 </ul>
 </nav>
 </div>
@@ -209,6 +213,7 @@ but as design.</em>
 <li><a href="#9">9</a></li>
 <li><a href="#10">10</a></li>
 <li><a href="#11">11</a></li>
+<li><a href="#12">12</a></li>
 </ul>
 </nav>
 </div>
@@ -258,6 +263,7 @@ yourself), Go disallows the import of main packages</li>
 <li><a href="#9">9</a></li>
 <li><a href="#10">10</a></li>
 <li><a href="#11">11</a></li>
+<li><a href="#12">12</a></li>
 </ul>
 </nav>
 </div>
@@ -322,6 +328,7 @@ yourself), Go disallows the import of main packages</li>
 <li><a href="#9">9</a></li>
 <li><a href="#10">10</a></li>
 <li><a href="#11">11</a></li>
+<li><a href="#12">12</a></li>
 </ul>
 </nav>
 </div>
@@ -362,6 +369,7 @@ yourself), Go disallows the import of main packages</li>
 <li><a href="#9">9</a></li>
 <li><a href="#10">10</a></li>
 <li><a href="#11">11</a></li>
+<li><a href="#12">12</a></li>
 </ul>
 </nav>
 </div>
@@ -435,6 +443,7 @@ yourself), Go disallows the import of main packages</li>
 <li><a href="#9">9</a></li>
 <li><a href="#10">10</a></li>
 <li><a href="#11">11</a></li>
+<li><a href="#12">12</a></li>
 </ul>
 </nav>
 </div>
@@ -512,6 +521,7 @@ yourself), Go disallows the import of main packages</li>
 <li><a href="#9">9</a></li>
 <li><a href="#10">10</a></li>
 <li><a href="#11">11</a></li>
+<li><a href="#12">12</a></li>
 </ul>
 </nav>
 </div>
@@ -608,6 +618,7 @@ yourself), Go disallows the import of main packages</li>
 <li><a href="#9">9</a></li>
 <li><a href="#10">10</a></li>
 <li><a href="#11">11</a></li>
+<li><a href="#12">12</a></li>
 </ul>
 </nav>
 </div>
@@ -642,6 +653,7 @@ yourself), Go disallows the import of main packages</li>
 <li class="current"><a href="#9">9</a></li>
 <li><a href="#10">10</a></li>
 <li><a href="#11">11</a></li>
+<li><a href="#12">12</a></li>
 </ul>
 </nav>
 </div>
@@ -727,6 +739,7 @@ yourself), Go disallows the import of main packages</li>
 <li><a href="#9">9</a></li>
 <li class="current"><a href="#10">10</a></li>
 <li><a href="#11">11</a></li>
+<li><a href="#12">12</a></li>
 </ul>
 </nav>
 </div>
@@ -807,6 +820,83 @@ yourself), Go disallows the import of main packages</li>
 <li><a href="#9">9</a></li>
 <li><a href="#10">10</a></li>
 <li class="current"><a href="#11">11</a></li>
+<li><a href="#12">12</a></li>
+</ul>
+</nav>
+</div>
+<div class="slide" id="12"><header><h2>Implement a service</h2>
+</header>
+<div class="content"><p>The project will grow and at some point Lisa comes by and
+        says they are switching languages for the intranet
+        implementation but they really want to have access to the
+        logic of generating rebelious statements. Could you write a
+        service that exposes it?<br> Easy peasy, but where to put it?
+        we a few choices</p>
+<table class="columns">
+<tr><td>Add the service logic in package rebel<pre class="shell dark">$ tree rebel<br/>rebel
+├── cmd
+│   └── rebel
+│       ├── main.go
+│       └── service.go
+├── go.mod
+├── phrase.go
+├── rebel.go
+└── rebel_test.go
+
+2 directories, 6 files
+</pre></td><td><br/><br/>Add the service logic in command<pre class="shell dark">$ tree rebel<br/>rebel
+├── cmd
+│   └── rebel
+│       └── main.go
+├── go.mod
+├── phrase.go
+├── rebel.go
+├── rebel_test.go
+└── service.go
+
+2 directories, 6 files
+</pre></td><td><br/><br/><br/><br/>Add the service logic in package rebel/service<pre class="shell dark">$ tree rebel<br/>rebel
+├── cmd
+│   └── rebel
+│       └── main.go
+├── go.mod
+├── phrase.go
+├── rebel.go
+├── rebel_test.go
+└── service
+    └── service.go
+
+3 directories, 6 files
+</pre></td><td><br/><br/><br/><br/><br/><br/><br/><br/>Combine option 3 with new command<pre class="shell dark">$ tree rebel<br/>rebel
+├── cmd
+│   ├── rebel
+│   │   └── main.go
+│   └── rebelsrv
+│       └── main.go
+├── go.mod
+├── phrase.go
+├── rebel.go
+├── rebel_test.go
+└── service
+    └── service.go
+
+4 directories, 7 files
+</pre></td></tr>
+</table>
+</div>
+<nav><ul>
+<li><a href="#1">1</a></li>
+<li><a href="#2">2</a></li>
+<li><a href="#3">3</a></li>
+<li><a href="#4">4</a></li>
+<li><a href="#5">5</a></li>
+<li><a href="#6">6</a></li>
+<li><a href="#7">7</a></li>
+<li><a href="#8">8</a></li>
+<li><a href="#9">9</a></li>
+<li><a href="#10">10</a></li>
+<li><a href="#11">11</a></li>
+<li class="current"><a href="#12">12</a></li>
 </ul>
 </nav>
 </div>

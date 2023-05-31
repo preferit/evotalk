@@ -261,5 +261,40 @@ yourself), Go disallows the import of main packages`),
         logic. It also forces you to design rebel features in such a
         way that they may be used by Lisa as well as Max.`),
 	)
+
+	d.Slide(
+		H2("Implement a service"),
+
+		P(`The project will grow and at some point Lisa comes by and
+        says they are switching languages for the intranet
+        implementation but they really want to have access to the
+        logic of generating rebelious statements. Could you write a
+        service that exposes it?<br> Easy peasy, but where to put it?
+        we a few choices`),
+
+		Table(Class("columns"),
+			Tr(
+				Td(
+					"Add the service logic in package rebel",
+					shell("$ tree rebel", "ex07_1.tree"),
+				),
+				Td(
+					Br(), Br(),
+					"Add the service logic in command",
+					shell("$ tree rebel", "ex07_2.tree"),
+				),
+				Td(
+					Br(), Br(), Br(), Br(),
+					"Add the service logic in package rebel/service",
+					shell("$ tree rebel", "ex07_3.tree"),
+				),
+				Td(
+					Br(), Br(), Br(), Br(), Br(), Br(), Br(), Br(),
+					"Combine option 3 with new command",
+					shell("$ tree rebel", "ex07_4.tree"),
+				),
+			),
+		),
+	)
 	return d
 }
