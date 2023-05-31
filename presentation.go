@@ -275,19 +275,21 @@ yourself), Go disallows the import of main packages`),
 		Table(Class("columns"),
 			Tr(
 				Td(
-					"Add the service logic in package rebel",
+					"Add the service logic in existing command",
 					shell("$ tree rebel", "ex07_1.tree"),
 				),
 				Td(
 					Br(), Br(),
-					"Add the service logic in command",
+					"Add the service logic in package rebel",
 					shell("$ tree rebel", "ex07_2.tree"),
 				),
+				Td("&nbsp;&nbsp;&nbsp;"),
 				Td(
 					Br(), Br(), Br(), Br(),
 					"Add the service logic in package rebel/service",
 					shell("$ tree rebel", "ex07_3.tree"),
 				),
+				Td("&nbsp;&nbsp;&nbsp;"),
 				Td(
 					Br(), Br(), Br(), Br(), Br(), Br(), Br(), Br(),
 					"Combine option 3 with new command",
@@ -296,5 +298,29 @@ yourself), Go disallows the import of main packages`),
 			),
 		),
 	)
+
+	d.Slide(
+		H2("Add the service logic in existing command"),
+		shell("$ tree rebel", "ex07_1.tree"),
+
+		Table(
+			Tr(
+				Th("Pros"), Th("Cons"),
+			),
+			Td(
+				Ul(
+					Li(`Package rebel remains untouched`),
+					Li(`API logic separated from domain logic`),
+				),
+			),
+			Td(
+				Ul(
+					Li(`Existing command increases in complexity that Max does not need`),
+					Li(`API logic mixed with command logic`),
+				),
+			),
+		),
+	)
+
 	return d
 }
