@@ -362,25 +362,28 @@ yourself), Go disallows the import of main packages`),
 			),
 		),
 	)
-	/*
-		d.Slide(
-			H2(""),
-			shell("$ tree rebel", "ex07_2.tree"),
-			Table(
-				Tr(
-					Th("Pros"), Th("Cons"),
-				),
-				Td(
-					Ul(
-						),
-				),
-				Td(
-					Ul(
 
-					),
+	d.Slide(
+		H2("Combine option 3 with new command"),
+		shell("$ tree rebel", "ex07_4.tree"),
+		Table(
+			Tr(
+				Th("Pros"), Th("Cons"),
+			),
+			Td(
+				Ul(
+					Li(`Package rebel remains untouched`),
+					Li(`API logic separated from domain logic`),
+					Li(`Existing command remains intact`),
 				),
 			),
-		)*/
+			Td(
+				Ul(
+					Li(`Build complexity increases, each stakeholder has their own command`),
+				),
+			),
+		),
+	)
 
 	return d
 }
