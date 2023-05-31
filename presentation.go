@@ -241,5 +241,25 @@ yourself), Go disallows the import of main packages`),
 
 		B(`Move command, keep domain logic.`),
 	)
+
+	d.Slide(
+		H2("Move command, keep domain logic"),
+		Table(
+			Tr(
+				Td(
+					shell("$ tree rebel", "ex06.tree"),
+					load("../ex/06/cmd/rebel/main.go"),
+				),
+				Td(
+					load("../ex/06/rebel.go"),
+				),
+			),
+		),
+
+		P(`This design, is as effortless as the first attempt at the
+        decision point, but it makes it easier to evolve the rebel
+        logic. It also forces you to design rebel features in such a
+        way that they may be used by Lisa as well as Max.`),
+	)
 	return d
 }
