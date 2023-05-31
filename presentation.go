@@ -322,5 +322,27 @@ yourself), Go disallows the import of main packages`),
 		),
 	)
 
+	d.Slide(
+		H2("Add the service logic in package rebel"),
+		shell("$ tree rebel", "ex07_2.tree"),
+
+		Table(
+			Tr(
+				Th("Pros"), Th("Cons"),
+			),
+			Td(
+				Ul(
+					Li(`I can't see any`),
+				),
+			),
+			Td(
+				Ul(
+					Li(`Existing command increases in complexity that Max does not need`),
+					Li(`API logic mixed with domain logic`),
+				),
+			),
+		),
+	)
+
 	return d
 }
