@@ -176,6 +176,7 @@ color: darkgreen;
 <li><a href="#3">3</a></li>
 <li><a href="#4">4</a></li>
 <li><a href="#5">5</a></li>
+<li><a href="#6">6</a></li>
 </ul>
 </nav>
 </div>
@@ -197,6 +198,7 @@ but as design.</em>
 <li><a href="#3">3</a></li>
 <li><a href="#4">4</a></li>
 <li><a href="#5">5</a></li>
+<li><a href="#6">6</a></li>
 </ul>
 </nav>
 </div>
@@ -240,6 +242,7 @@ yourself), Go disallows the import of main packages</li>
 <li class="current"><a href="#3">3</a></li>
 <li><a href="#4">4</a></li>
 <li><a href="#5">5</a></li>
+<li><a href="#6">6</a></li>
 </ul>
 </nav>
 </div>
@@ -298,6 +301,7 @@ yourself), Go disallows the import of main packages</li>
 <li><a href="#3">3</a></li>
 <li class="current"><a href="#4">4</a></li>
 <li><a href="#5">5</a></li>
+<li><a href="#6">6</a></li>
 </ul>
 </nav>
 </div>
@@ -332,6 +336,31 @@ yourself), Go disallows the import of main packages</li>
 <li><a href="#3">3</a></li>
 <li><a href="#4">4</a></li>
 <li class="current"><a href="#5">5</a></li>
+<li><a href="#6">6</a></li>
+</ul>
+</nav>
+</div>
+<div class="slide" id="6"><header><h2>First attempt at redesign</h2>
+</header>
+<div class="content"><p>How do you convert the current state, a command, into an
+        importable package while also keeping the command. First
+        attempt; keep command in root and create a package with logic
+        to generate the phrases.</p>
+<pre class="shell dark">$ tree rebel<br/>rebel
+├── go.mod
+├── main.go
+└── phrase
+    └── phrase.go
+
+1 directory, 3 files
+</pre></div>
+<nav><ul>
+<li><a href="#1">1</a></li>
+<li><a href="#2">2</a></li>
+<li><a href="#3">3</a></li>
+<li><a href="#4">4</a></li>
+<li><a href="#5">5</a></li>
+<li class="current"><a href="#6">6</a></li>
 </ul>
 </nav>
 </div>
