@@ -133,5 +133,27 @@ yourself), Go disallows the import of main packages`),
 			),
 		),
 	)
+
+	d.Slide(
+		H2("Improve first redesign"),
+
+		P(`We now have multiple stakeholders depending on it and going
+        forward they might get affected. Our goal is to be able to
+        make changes as freely as possible without affecting the
+        stakeholders. Before we release these changes can we improve
+        the design?`),
+
+		Table(
+			Tr(
+				Td(
+					shell("$ tree rebel", "ex04.tree"),
+					load("../ex/04/main.go"),
+				),
+				Td(
+					load("../ex/04/phrase/phrase.go"),
+				),
+			),
+		),
+	)
 	return d
 }
