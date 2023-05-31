@@ -61,7 +61,7 @@ yourself), Go disallows the import of main packages`),
 	)
 
 	d.Slide(
-		H2(""),
+		H2("You code along.."),
 
 		P(`This is a starting point; you have no intention to share
         any logic you only want to use the command yourself. You are
@@ -75,19 +75,51 @@ yourself), Go disallows the import of main packages`),
 				),
 				Td(
 					shell("$ tree rebel", "ex02.tree"),
-					P(`At this point your coworkers Max and Lisa see the work and you end up
-in a discussion;`),
-					Pre(`
-- Max:  Would be nice to see that phrase when I login as the message of the day
-- you:  Easy peasy, just go install ... and run it.
-- Lisa: Can we include it on the intranet?
-- you:  Hmm.. (you pause and start thinking)
-- you:  Not really; you could use the binary, but it would be slow with all the
-        traffic we have`),
+
+					P(`At this point your coworkers Max and Lisa see
+                    the work and you end up in a discussion;`),
 				),
 			),
 		),
 	)
+
+	d.Slide(
+		H2("Share with friends"),
+
+		Table(
+			Tr(
+				Td(
+					Img(Src("youmaxlisa.png")),
+				), Td(
+
+					Pre(`
+- Max:  Would be nice to see that phrase when I login as the message of the day
+- You:  Easy peasy, just go install ... and run it.
+- Lisa: Can we include it on the intranet?
+- You:  Hmm.. (you pause and start thinking)
+- You:  Not really; you could use the binary, but it would be slow with all the
+        traffic we have`),
+
+					P(`Here you are faced with a decision on how to share
+                the logic of generating a random rebelious
+                statement.`),
+
+					Ol(
+						Li(`Redesign the logic as an importable package or`),
+						Li(`Write a small service with an API.`),
+						Li(`Share the data only and let them figure it out`),
+					),
+
+					P(`The first and second option will both require some
+               effort. As the consumers are your friiends the first
+               seems more fitting and much easier to do. The third
+               option, though viable, does not help this presentation
+               :-).`),
+				),
+			),
+		),
+	)
+
 	return d
 }
 
