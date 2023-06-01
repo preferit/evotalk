@@ -262,63 +262,69 @@ yourself), Go disallows the import of main packages`),
         way that they may be used by Lisa as well as Max.`),
 	)
 
-	d.Slide(
-		H2("Implement a service"),
+	serviceOpt := func(show int) {
 
-		P(`The project will grow and at some point Lisa comes by and
+		opt := func(n int, e *Element) *Element {
+			if show > 0 && show < n {
+				return e
+			}
+			return Wrap()
+		}
+
+		d.Slide(
+			H2("Implement a service"),
+
+			P(`The project will grow and at some point Lisa comes by and
         says they are switching languages for the intranet
         implementation but they really want to have access to the
         logic of generating rebelious statements. Could you write a
         service that exposes it?<br> Easy peasy, but where to put it?
         we a few choices`),
 
-		Table(Class("columns"),
-			Tr(
-				Td(
-					"Add the service logic in existing command",
-					shell("$ tree rebel", "ex07_1.tree"),
-				),
-				Td(
-					"Add the service logic in package rebel",
-					shell("$ tree rebel", "ex07_2.tree"),
-				),
-				Td(
-					"Add the service logic in package rebel/service",
-					shell("$ tree rebel", "ex07_3.tree"),
-				),
-				Td(
-					"New command only",
-					shell("$ tree rebel", "ex07_4.tree"),
-				),
-				Td(
-					"Combine option 3 with new command",
-					shell("$ tree rebel", "ex07_5.tree"),
-				),
-			),
-		),
-	)
+			Table(Class("columns"),
+				Tr(
+					Td(
+						"Add the service logic in existing command",
+						shell("$ tree rebel", "ex07_1.tree"),
 
-	d.Slide(
-		H2("Add the service logic in existing command"),
-		shell("$ tree rebel", "ex07_1.tree"),
-		Table(
-			Tr(
-				Th("Pros"), Th("Cons"),
-			),
-			Td(
-				Ul(
-					Li(`Package rebel remains untouched`),
-					Li(`API logic separated from domain logic`),
+						opt(2,
+							Wrap(
+								H3("Pros"),
+								Ul(
+									Li(`Package rebel remains untouched`),
+									Li(`API logic separated from domain logic`),
+								),
+								H3("Cons"),
+								Ul(
+									Li(`Existing command increases in complexity that Max does not need`),
+									Li(`API logic mixed with command logic`),
+								),
+							),
+						),
+					),
+					Td(
+						"Add the service logic in package rebel",
+						shell("$ tree rebel", "ex07_2.tree"),
+					),
+					Td(
+						"Add the service logic in package rebel/service",
+						shell("$ tree rebel", "ex07_3.tree"),
+					),
+					Td(
+						"New command only",
+						shell("$ tree rebel", "ex07_4.tree"),
+					),
+					Td(
+						"Combine option 3 with new command",
+						shell("$ tree rebel", "ex07_5.tree"),
+					),
 				),
 			),
-			Td(
-				Ul(
-					Li(`Existing command increases in complexity that Max does not need`),
-					Li(`API logic mixed with command logic`),
-				),
-			),
-		),
-	)
+		)
+	}
+
+	serviceOpt(0)
+	serviceOpt(1)
 
 	d.Slide(
 		H2("Add the service logic in package rebel"),

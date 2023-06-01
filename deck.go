@@ -321,6 +321,7 @@ func theme() *CSS {
 	)
 	css.Style(".columns td",
 		"padding: 0 1em",
+		"width: 19%",
 	)
 	css.Style(".columns .shell",
 		"min-width: auto",
