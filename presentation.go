@@ -265,7 +265,10 @@ yourself), Go disallows the import of main packages`),
 	serviceOpt := func(show int) {
 
 		opt := func(n int, e *Element) *Element {
-			if show > 0 && show < n {
+			if n == 0 {
+				return Wrap()
+			}
+			if n <= show {
 				return e
 			}
 			return Wrap()
@@ -287,7 +290,7 @@ yourself), Go disallows the import of main packages`),
 						"Add the service logic in existing command",
 						shell("$ tree rebel", "ex07_1.tree"),
 
-						opt(2,
+						opt(1,
 							Wrap(
 								H3("Pros"),
 								Ul(
@@ -305,14 +308,54 @@ yourself), Go disallows the import of main packages`),
 					Td(
 						"Add the service logic in package rebel",
 						shell("$ tree rebel", "ex07_2.tree"),
+						opt(2,
+							Wrap(
+								H3("Pros"),
+								Ul(
+									Li(`I can't see any`),
+								),
+								H3("Cons"),
+								Ul(
+									Li(`Existing command increases in complexity that Max does not need`),
+									Li(`API logic mixed with domain logic`),
+								),
+							),
+						),
 					),
 					Td(
 						"Add the service logic in package rebel/service",
 						shell("$ tree rebel", "ex07_3.tree"),
+						opt(3,
+							Wrap(
+								H3("Pros"),
+								Ul(
+									Li(`Package rebel remains untouched`),
+									Li(`API logic separated from domain logic`),
+								),
+								H3("Cons"),
+								Ul(
+									Li(`Existing command increases in complexity that Max does not need`),
+								),
+							),
+						),
 					),
 					Td(
 						"New command only",
 						shell("$ tree rebel", "ex07_4.tree"),
+						opt(4,
+							Wrap(
+								H3("Pros"),
+								Ul(
+									Li(`Package rebel remains untouched`),
+									Li(`API logic separated from domain logic`),
+									Li(`Existing command remains intact`),
+								),
+								H3("Cons"),
+								Ul(
+									Li(`Build complexity increases, each stakeholder has their own command`),
+								),
+							),
+						),
 					),
 					Td(
 						"Combine option 3 with new command",
@@ -324,71 +367,11 @@ yourself), Go disallows the import of main packages`),
 	}
 
 	serviceOpt(0)
+
 	serviceOpt(1)
-
-	d.Slide(
-		H2("Add the service logic in package rebel"),
-		shell("$ tree rebel", "ex07_2.tree"),
-		Table(
-			Tr(
-				Th("Pros"), Th("Cons"),
-			),
-			Td(
-				Ul(
-					Li(`I can't see any`),
-				),
-			),
-			Td(
-				Ul(
-					Li(`Existing command increases in complexity that Max does not need`),
-					Li(`API logic mixed with domain logic`),
-				),
-			),
-		),
-	)
-
-	d.Slide(
-		H2("Add the service logic in package rebel/service"),
-		shell("$ tree rebel", "ex07_3.tree"),
-		Table(
-			Tr(
-				Th("Pros"), Th("Cons"),
-			),
-			Td(
-				Ul(
-					Li(`Package rebel remains untouched`),
-					Li(`API logic separated from domain logic`),
-				),
-			),
-			Td(
-				Ul(
-					Li(`Existing command increases in complexity that Max does not need`),
-				),
-			),
-		),
-	)
-
-	d.Slide(
-		H2("New command only"),
-		shell("$ tree rebel", "ex07_4.tree"),
-		Table(
-			Tr(
-				Th("Pros"), Th("Cons"),
-			),
-			Td(
-				Ul(
-					Li(`Package rebel remains untouched`),
-					Li(`API logic separated from domain logic`),
-					Li(`Existing command remains intact`),
-				),
-			),
-			Td(
-				Ul(
-					Li(`Build complexity increases, each stakeholder has their own command`),
-				),
-			),
-		),
-	)
+	serviceOpt(2)
+	serviceOpt(3)
+	serviceOpt(4)
 
 	d.Slide(
 		H2("Which way to go?"),

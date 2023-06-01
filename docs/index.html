@@ -1120,9 +1120,37 @@ yourself), Go disallows the import of main packages</li>
 </ul>
 </nav>
 </div>
-<div class="slide" id="14"><header><h2>Add the service logic in package rebel</h2>
+<div class="slide" id="14"><header><h2>Implement a service</h2>
 </header>
-<div class="content"><pre class="shell dark">$ tree rebel<br/>rebel
+<div class="content"><p>The project will grow and at some point Lisa comes by and
+        says they are switching languages for the intranet
+        implementation but they really want to have access to the
+        logic of generating rebelious statements. Could you write a
+        service that exposes it?<br> Easy peasy, but where to put it?
+        we a few choices</p>
+<table class="columns">
+<tr><td>Add the service logic in existing command<pre class="shell dark">$ tree rebel<br/>rebel
+├── cmd
+│   └── rebel
+│       ├── main.go
+│       └── service.go
+├── go.mod
+├── phrase.go
+├── rebel.go
+└── rebel_test.go
+
+2 directories, 6 files
+</pre><h3>Pros</h3>
+<ul>
+<li>Package rebel remains untouched</li>
+<li>API logic separated from domain logic</li>
+</ul>
+<h3>Cons</h3>
+<ul>
+<li>Existing command increases in complexity that Max does not need</li>
+<li>API logic mixed with command logic</li>
+</ul>
+</td><td>Add the service logic in package rebel<pre class="shell dark">$ tree rebel<br/>rebel
 ├── cmd
 │   └── rebel
 │       └── main.go
@@ -1133,16 +1161,56 @@ yourself), Go disallows the import of main packages</li>
 └── service.go
 
 2 directories, 6 files
-</pre><table>
-<tr><th>Pros</th><th>Cons</th></tr>
-<td><ul>
+</pre><h3>Pros</h3>
+<ul>
 <li>I can't see any</li>
 </ul>
-</td><td><ul>
+<h3>Cons</h3>
+<ul>
 <li>Existing command increases in complexity that Max does not need</li>
 <li>API logic mixed with domain logic</li>
 </ul>
-</td></table>
+</td><td>Add the service logic in package rebel/service<pre class="shell dark">$ tree rebel<br/>rebel
+├── cmd
+│   └── rebel
+│       └── main.go
+├── go.mod
+├── phrase.go
+├── rebel.go
+├── rebel_test.go
+└── service
+    └── service.go
+
+3 directories, 6 files
+</pre></td><td>New command only<pre class="shell dark">$ tree rebel<br/>rebel
+├── cmd
+│   ├── rebel
+│   │   └── main.go
+│   └── rebelsrv
+│       ├── main.go
+│       └── service.go
+├── go.mod
+├── phrase.go
+├── rebel.go
+└── rebel_test.go
+
+3 directories, 7 files
+</pre></td><td>Combine option 3 with new command<pre class="shell dark">$ tree rebel<br/>rebel
+├── cmd
+│   ├── rebel
+│   │   └── main.go
+│   └── rebelsrv
+│       └── main.go
+├── go.mod
+├── phrase.go
+├── rebel.go
+├── rebel_test.go
+└── service
+    └── service.go
+
+4 directories, 7 files
+</pre></td></tr>
+</table>
 </div>
 <nav><ul>
 <li><a href="#1">1</a></li>
@@ -1168,9 +1236,57 @@ yourself), Go disallows the import of main packages</li>
 </ul>
 </nav>
 </div>
-<div class="slide" id="15"><header><h2>Add the service logic in package rebel/service</h2>
+<div class="slide" id="15"><header><h2>Implement a service</h2>
 </header>
-<div class="content"><pre class="shell dark">$ tree rebel<br/>rebel
+<div class="content"><p>The project will grow and at some point Lisa comes by and
+        says they are switching languages for the intranet
+        implementation but they really want to have access to the
+        logic of generating rebelious statements. Could you write a
+        service that exposes it?<br> Easy peasy, but where to put it?
+        we a few choices</p>
+<table class="columns">
+<tr><td>Add the service logic in existing command<pre class="shell dark">$ tree rebel<br/>rebel
+├── cmd
+│   └── rebel
+│       ├── main.go
+│       └── service.go
+├── go.mod
+├── phrase.go
+├── rebel.go
+└── rebel_test.go
+
+2 directories, 6 files
+</pre><h3>Pros</h3>
+<ul>
+<li>Package rebel remains untouched</li>
+<li>API logic separated from domain logic</li>
+</ul>
+<h3>Cons</h3>
+<ul>
+<li>Existing command increases in complexity that Max does not need</li>
+<li>API logic mixed with command logic</li>
+</ul>
+</td><td>Add the service logic in package rebel<pre class="shell dark">$ tree rebel<br/>rebel
+├── cmd
+│   └── rebel
+│       └── main.go
+├── go.mod
+├── phrase.go
+├── rebel.go
+├── rebel_test.go
+└── service.go
+
+2 directories, 6 files
+</pre><h3>Pros</h3>
+<ul>
+<li>I can't see any</li>
+</ul>
+<h3>Cons</h3>
+<ul>
+<li>Existing command increases in complexity that Max does not need</li>
+<li>API logic mixed with domain logic</li>
+</ul>
+</td><td>Add the service logic in package rebel/service<pre class="shell dark">$ tree rebel<br/>rebel
 ├── cmd
 │   └── rebel
 │       └── main.go
@@ -1182,16 +1298,44 @@ yourself), Go disallows the import of main packages</li>
     └── service.go
 
 3 directories, 6 files
-</pre><table>
-<tr><th>Pros</th><th>Cons</th></tr>
-<td><ul>
+</pre><h3>Pros</h3>
+<ul>
 <li>Package rebel remains untouched</li>
 <li>API logic separated from domain logic</li>
 </ul>
-</td><td><ul>
+<h3>Cons</h3>
+<ul>
 <li>Existing command increases in complexity that Max does not need</li>
 </ul>
-</td></table>
+</td><td>New command only<pre class="shell dark">$ tree rebel<br/>rebel
+├── cmd
+│   ├── rebel
+│   │   └── main.go
+│   └── rebelsrv
+│       ├── main.go
+│       └── service.go
+├── go.mod
+├── phrase.go
+├── rebel.go
+└── rebel_test.go
+
+3 directories, 7 files
+</pre></td><td>Combine option 3 with new command<pre class="shell dark">$ tree rebel<br/>rebel
+├── cmd
+│   ├── rebel
+│   │   └── main.go
+│   └── rebelsrv
+│       └── main.go
+├── go.mod
+├── phrase.go
+├── rebel.go
+├── rebel_test.go
+└── service
+    └── service.go
+
+4 directories, 7 files
+</pre></td></tr>
+</table>
 </div>
 <nav><ul>
 <li><a href="#1">1</a></li>
@@ -1217,9 +1361,78 @@ yourself), Go disallows the import of main packages</li>
 </ul>
 </nav>
 </div>
-<div class="slide" id="16"><header><h2>New command only</h2>
+<div class="slide" id="16"><header><h2>Implement a service</h2>
 </header>
-<div class="content"><pre class="shell dark">$ tree rebel<br/>rebel
+<div class="content"><p>The project will grow and at some point Lisa comes by and
+        says they are switching languages for the intranet
+        implementation but they really want to have access to the
+        logic of generating rebelious statements. Could you write a
+        service that exposes it?<br> Easy peasy, but where to put it?
+        we a few choices</p>
+<table class="columns">
+<tr><td>Add the service logic in existing command<pre class="shell dark">$ tree rebel<br/>rebel
+├── cmd
+│   └── rebel
+│       ├── main.go
+│       └── service.go
+├── go.mod
+├── phrase.go
+├── rebel.go
+└── rebel_test.go
+
+2 directories, 6 files
+</pre><h3>Pros</h3>
+<ul>
+<li>Package rebel remains untouched</li>
+<li>API logic separated from domain logic</li>
+</ul>
+<h3>Cons</h3>
+<ul>
+<li>Existing command increases in complexity that Max does not need</li>
+<li>API logic mixed with command logic</li>
+</ul>
+</td><td>Add the service logic in package rebel<pre class="shell dark">$ tree rebel<br/>rebel
+├── cmd
+│   └── rebel
+│       └── main.go
+├── go.mod
+├── phrase.go
+├── rebel.go
+├── rebel_test.go
+└── service.go
+
+2 directories, 6 files
+</pre><h3>Pros</h3>
+<ul>
+<li>I can't see any</li>
+</ul>
+<h3>Cons</h3>
+<ul>
+<li>Existing command increases in complexity that Max does not need</li>
+<li>API logic mixed with domain logic</li>
+</ul>
+</td><td>Add the service logic in package rebel/service<pre class="shell dark">$ tree rebel<br/>rebel
+├── cmd
+│   └── rebel
+│       └── main.go
+├── go.mod
+├── phrase.go
+├── rebel.go
+├── rebel_test.go
+└── service
+    └── service.go
+
+3 directories, 6 files
+</pre><h3>Pros</h3>
+<ul>
+<li>Package rebel remains untouched</li>
+<li>API logic separated from domain logic</li>
+</ul>
+<h3>Cons</h3>
+<ul>
+<li>Existing command increases in complexity that Max does not need</li>
+</ul>
+</td><td>New command only<pre class="shell dark">$ tree rebel<br/>rebel
 ├── cmd
 │   ├── rebel
 │   │   └── main.go
@@ -1232,17 +1445,32 @@ yourself), Go disallows the import of main packages</li>
 └── rebel_test.go
 
 3 directories, 7 files
-</pre><table>
-<tr><th>Pros</th><th>Cons</th></tr>
-<td><ul>
+</pre><h3>Pros</h3>
+<ul>
 <li>Package rebel remains untouched</li>
 <li>API logic separated from domain logic</li>
 <li>Existing command remains intact</li>
 </ul>
-</td><td><ul>
+<h3>Cons</h3>
+<ul>
 <li>Build complexity increases, each stakeholder has their own command</li>
 </ul>
-</td></table>
+</td><td>Combine option 3 with new command<pre class="shell dark">$ tree rebel<br/>rebel
+├── cmd
+│   ├── rebel
+│   │   └── main.go
+│   └── rebelsrv
+│       └── main.go
+├── go.mod
+├── phrase.go
+├── rebel.go
+├── rebel_test.go
+└── service
+    └── service.go
+
+4 directories, 7 files
+</pre></td></tr>
+</table>
 </div>
 <nav><ul>
 <li><a href="#1">1</a></li>
