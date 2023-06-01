@@ -466,5 +466,32 @@ yourself), Go disallows the import of main packages`),
 	crawlOpt(2)
 	crawlOpt(3)
 
+	d.Slide(
+		H2("The team grows"),
+
+		P(`You've come a long way since that early `, Code(`func
+		main`), `.  The service is growing as Lisa finds new features
+		to add. At some point you need to bring in more people to work
+		on the service side. Initially you might start working in the
+		same repository but down the road it may make more sense to
+		split the service into it's own. The latter is what we're
+		interested in.`),
+
+		Table(Class("columns"),
+			Tr(
+				Td(
+					B("Let's go with option 2"),
+					shell("$ tree rebel", "ex08_2.tree"),
+				),
+				Td(
+
+					Img(Src("rebelsrv.png")),
+				),
+				Td(
+					Img(Src("rebelsrv2.png")),
+				),
+			),
+		),
+	)
 	return d
 }
