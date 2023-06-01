@@ -287,6 +287,7 @@ yourself), Go disallows the import of main packages`),
 			Table(Class("columns"),
 				Tr(
 					Td(
+						H3(1),
 						"Add the service logic in existing command",
 						shell("$ tree rebel", "ex07_1.tree"),
 
@@ -306,6 +307,7 @@ yourself), Go disallows the import of main packages`),
 						),
 					),
 					Td(
+						H3(2),
 						"Add the service logic in package rebel",
 						shell("$ tree rebel", "ex07_2.tree"),
 						opt(2,
@@ -323,6 +325,7 @@ yourself), Go disallows the import of main packages`),
 						),
 					),
 					Td(
+						H3(3),
 						"Add the service logic in package rebel/service",
 						shell("$ tree rebel", "ex07_3.tree"),
 						opt(3,
@@ -340,6 +343,7 @@ yourself), Go disallows the import of main packages`),
 						),
 					),
 					Td(
+						H3(4),
 						"New command only",
 						shell("$ tree rebel", "ex07_4.tree"),
 						opt(4,
@@ -358,6 +362,7 @@ yourself), Go disallows the import of main packages`),
 						),
 					),
 					Td(
+						H3(5),
 						"Combine option 3 with new command",
 						shell("$ tree rebel", "ex07_5.tree"),
 					),
@@ -365,9 +370,7 @@ yourself), Go disallows the import of main packages`),
 			),
 		)
 	}
-
 	serviceOpt(0)
-
 	serviceOpt(1)
 	serviceOpt(2)
 	serviceOpt(3)
@@ -376,24 +379,8 @@ yourself), Go disallows the import of main packages`),
 	d.Slide(
 		H2("Which way to go?"),
 
-		P(`Well to keep our design easy to evolve we want`),
-
-		Ul(
-			Li(`low complexity`),
-			Li(`clear package responsibilities`),
-		),
-
-		P(`This rules out the first three options, however we might
-		consider having multiple commands a higher complexity than one
-		initially, which would make option three viable aswell. Which
-		one would you go for?`),
-
-		P(`I decided to go with the fourth option`),
-	)
-
-	d.Slide(
-		H2("The forth option"),
-		shell("$ tree rebel", "ex07_4.tree"),
+		P(`I decided to go with the fifth option`),
+		shell("$ tree rebel", "ex07_5.tree"),
 
 		P(`The service is up and running and you get an idea of adding
 		a feature to package rebel for scanning the web for statements
