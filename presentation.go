@@ -275,7 +275,7 @@ yourself), Go disallows the import of main packages`),
 		}
 
 		d.Slide(
-			H2("Implement a service"),
+			H2("Lisa wants a service"),
 
 			P(`The project will grow and at some point Lisa comes by and
         says they are switching languages for the intranet
@@ -289,10 +289,10 @@ yourself), Go disallows the import of main packages`),
 					Td(
 						H3(1),
 						"Add the service logic in existing command",
-						shell("$ tree rebel", "ex07_1.tree"),
 
 						opt(1,
 							Wrap(
+								shell("$ tree rebel", "ex07_1.tree"),
 								H3("Pros"),
 								Ul(
 									Li(`Package rebel remains untouched`),
@@ -309,9 +309,9 @@ yourself), Go disallows the import of main packages`),
 					Td(
 						H3(2),
 						"Add the service logic in package rebel",
-						shell("$ tree rebel", "ex07_2.tree"),
 						opt(2,
 							Wrap(
+								shell("$ tree rebel", "ex07_2.tree"),
 								H3("Pros"),
 								Ul(
 									Li(`I can't see any`),
@@ -327,9 +327,9 @@ yourself), Go disallows the import of main packages`),
 					Td(
 						H3(3),
 						"Add the service logic in package rebel/service",
-						shell("$ tree rebel", "ex07_3.tree"),
 						opt(3,
 							Wrap(
+								shell("$ tree rebel", "ex07_3.tree"),
 								H3("Pros"),
 								Ul(
 									Li(`Package rebel remains untouched`),
@@ -345,9 +345,9 @@ yourself), Go disallows the import of main packages`),
 					Td(
 						H3(4),
 						"New command only",
-						shell("$ tree rebel", "ex07_4.tree"),
 						opt(4,
 							Wrap(
+								shell("$ tree rebel", "ex07_4.tree"),
 								H3("Pros"),
 								Ul(
 									Li(`Package rebel remains untouched`),
@@ -363,8 +363,12 @@ yourself), Go disallows the import of main packages`),
 					),
 					Td(
 						H3(5),
-						"Combine option 3 with new command",
-						shell("$ tree rebel", "ex07_5.tree"),
+						"Combine option 3 and 4",
+						opt(5,
+							Wrap(
+								shell("$ tree rebel", "ex07_5.tree"),
+							),
+						),
 					),
 				),
 			),
@@ -375,6 +379,7 @@ yourself), Go disallows the import of main packages`),
 	serviceOpt(2)
 	serviceOpt(3)
 	serviceOpt(4)
+	serviceOpt(5)
 
 	d.Slide(
 		H2("Which way to go?"),

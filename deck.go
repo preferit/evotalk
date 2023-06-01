@@ -161,6 +161,7 @@ func (b *navbar) next() *Element {
 	ul := Ul()
 	groupDivider := map[int]bool{
 		12: true,
+		18: true,
 	}
 
 	for i := 0; i < b.max; i++ {
