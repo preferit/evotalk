@@ -3,11 +3,12 @@ rebel
 │   ├── rebel
 │   │   └── main.go
 │   └── rebelsrv
-│       ├── main.go
-│       └── service.go
+│       └── main.go
 ├── go.mod
 ├── phrase.go
 ├── rebel.go
-└── rebel_test.go
+├── rebel_test.go
+└── service
+    └── service.go
 
-3 directories, 7 files
+4 directories, 7 files

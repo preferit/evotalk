@@ -292,8 +292,14 @@ yourself), Go disallows the import of main packages`),
 				Td("&nbsp;&nbsp;&nbsp;"),
 				Td(
 					Br(), Br(), Br(), Br(), Br(), Br(), Br(), Br(),
-					"Combine option 3 with new command",
+					"New command only",
 					shell("$ tree rebel", "ex07_4.tree"),
+				),
+				Td("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"),
+				Td(
+					Br(), Br(), Br(), Br(), Br(), Br(), Br(), Br(), Br(), Br(), Br(), Br(),
+					"Combine option 3 with new command",
+					shell("$ tree rebel", "ex07_5.tree"),
 				),
 			),
 		),
@@ -364,7 +370,7 @@ yourself), Go disallows the import of main packages`),
 	)
 
 	d.Slide(
-		H2("Combine option 3 with new command"),
+		H2("New command only"),
 		shell("$ tree rebel", "ex07_4.tree"),
 		Table(
 			Tr(
