@@ -475,7 +475,7 @@ yourself), Go disallows the import of main packages`),
 		on the service side. Initially you might start working in the
 		same repository but down the road it may make more sense to
 		split the service into it's own. The latter is what we're
-		interested in.`),
+		interested in. `),
 
 		Table(Class("columns"),
 			Tr(
@@ -493,5 +493,19 @@ yourself), Go disallows the import of main packages`),
 			),
 		),
 	)
+
+	d.Slide(
+		H2("Final thoughts"),
+
+		P(`The design for change requires awareness of where we might
+		end up in the future and selecting a route that enables it as
+		frictionless as possible. Ie. if we'd selected `, A(Href("#17"), "option 4"), ` when
+		adding the service, the move at the end would have been even
+		easier at the expense of mixing service logic with command
+		logic. Depending on the service this may be a good tradeof.`),
+
+		Img(Src("rebelsrvok.png")),
+	)
+
 	return d
 }
