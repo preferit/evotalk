@@ -24,13 +24,17 @@ func Presentation() *deck {
 
 	d.Slide(
 		H2("Story"),
-		Img(Src("people.png")),
 
-		P(mustLoad("sl01.txt")),
-		/*Pre(Class("shell dark"),
-			"$ git clone git@github.com:preferit/cotalk.git\n",
-			"$ cd cotalk",
-		),*/
+		P(`From the simplest "func main" to a large service. What choices to
+consider when your project grows and how to keep it on track for
+future changes.`, Br(),
+
+			`We begin with hello world and then evolve it along a story path.
+Along the way depending on the choices we make, the <b>design</b> of our
+project will change. <em>I'll refer to directory layout, not as structure
+but as design.</em>`),
+
+		Img(Src("people.png")),
 	)
 
 	d.Slide(

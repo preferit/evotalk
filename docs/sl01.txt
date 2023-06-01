@@ -1,8 +1,0 @@
-From the simplest "func main" to a large service. What choices to
-consider when your project grows and how to keep it on track for
-future changes.
-
-We begin with hello world and then evolve it along a story path.
-Along the way depending on the choices we make, the <b>design</b> of our
-project will change. <em>I'll refer to directory layout, not as structure
-but as design.</em>
