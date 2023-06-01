@@ -399,6 +399,44 @@ yourself), Go disallows the import of main packages`),
 		consider having multiple commands a higher complexity than one
 		initially, which would make option three viable aswell. Which
 		one would you go for?`),
+
+		P(`I decided to go with the fourth option`),
+	)
+
+	d.Slide(
+		H2("The forth option"),
+		shell("$ tree rebel", "ex07_4.tree"),
+
+		P(`The service is up and running and you get an idea of adding
+		a feature to package rebel for scanning the web for statements
+		that the rebel can shout. It doesn't feel like the feature
+		fits in the rebel package directly but will be used by
+		it. Let's call the feature crawl, but where to put it?`),
+	)
+
+	d.Slide(
+		H2("New feature"),
+
+		Table(Class("columns"),
+			Tr(
+				Td(
+					"Add it directly in package rebel, but keep everything private",
+					shell("$ tree rebel", "ex08_1.tree"),
+				),
+				Td(
+					Br(), Br(),
+					"Add it to an internal package",
+					shell("$ tree rebel", "ex08_2.tree"),
+					"or ", Code("internal/crawl/crawl.go"), " if it makes sense",
+				),
+				Td("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"),
+				Td(
+					Br(), Br(), Br(), Br(),
+					"Add to a sub package",
+					shell("$ tree rebel", "ex08_3.tree"),
+				),
+			),
+		),
 	)
 	return d
 }

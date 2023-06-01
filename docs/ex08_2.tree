@@ -1,0 +1,16 @@
+rebel
+├── cmd
+│   ├── rebel
+│   │   └── main.go
+│   └── rebelsrv
+│       └── main.go
+├── go.mod
+├── internal
+│   └── crawl.go
+├── phrase.go
+├── rebel.go
+├── rebel_test.go
+└── service
+    └── service.go
+
+5 directories, 8 files
