@@ -6,11 +6,12 @@ rebel
 │       └── main.go
 ├── go.mod
 ├── internal
-│   └── crawl.go
+│   └── crawl
+│       └── crawl.go
 ├── phrase.go
 ├── rebel.go
 ├── rebel_test.go
 └── service
     └── service.go
 
-5 directories, 8 files
+6 directories, 8 files

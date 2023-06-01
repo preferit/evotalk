@@ -406,20 +406,36 @@ yourself), Go disallows the import of main packages`),
 				Tr(
 					Td(
 						H3(1),
-						"Add it directly in package rebel, but keep everything private",
+						"Add it directly in package rebel",
 						opt(1,
 							Wrap(
 								shell("$ tree rebel", "ex08_1.tree"),
+								H4("Pros"),
+								Ul(
+									Li(Em("Easy to edit initially")),
+								),
+								H4("Cons"),
+								Ul(
+									Li("Tightly coupled with the rebel domain logic"),
+								),
 							),
 						),
 					),
 					Td(
 						H3(2),
-						"Add it to an internal package",
+						"Add it to an internal/crawl package",
 						opt(2,
 							Wrap(
 								shell("$ tree rebel", "ex08_2.tree"),
-								"or ", Code("internal/crawl/crawl.go"), " if it makes sense",
+								H4("Pros"),
+								Ul(
+									Li("Decoupled from domain logic"),
+									Li("Cannot be imported by modules outside of the rebel module"),
+								),
+								H4("Cons"),
+								Ul(
+									Li("Can be imported by packages within this modules that you might want to move"),
+								),
 							),
 						),
 					),
@@ -429,6 +445,14 @@ yourself), Go disallows the import of main packages`),
 						opt(3,
 							Wrap(
 								shell("$ tree rebel", "ex08_3.tree"),
+								H4("Pros"),
+								Ul(
+									Li("Decoupled from domain logic"),
+								),
+								H4("Cons"),
+								Ul(
+									Li("You immediately need to be aware of it being importable"),
+								),
 							),
 						),
 					),
