@@ -125,6 +125,9 @@ border-radius: 10px;
 min-width: 40vw;
 overflow: wrap;
 }
+.columns td {
+padding: 0 1em;
+}
 .columns .shell {
 min-width: auto;
 }
@@ -932,7 +935,7 @@ yourself), Go disallows the import of main packages</li>
 └── rebel_test.go
 
 2 directories, 6 files
-</pre></td><td><br/><br/>Add the service logic in package rebel<pre class="shell dark">$ tree rebel<br/>rebel
+</pre></td><td>Add the service logic in package rebel<pre class="shell dark">$ tree rebel<br/>rebel
 ├── cmd
 │   └── rebel
 │       └── main.go
@@ -943,7 +946,7 @@ yourself), Go disallows the import of main packages</li>
 └── service.go
 
 2 directories, 6 files
-</pre></td><td>&nbsp;&nbsp;&nbsp;</td><td><br/><br/><br/><br/>Add the service logic in package rebel/service<pre class="shell dark">$ tree rebel<br/>rebel
+</pre></td><td>Add the service logic in package rebel/service<pre class="shell dark">$ tree rebel<br/>rebel
 ├── cmd
 │   └── rebel
 │       └── main.go
@@ -955,7 +958,7 @@ yourself), Go disallows the import of main packages</li>
     └── service.go
 
 3 directories, 6 files
-</pre></td><td>&nbsp;&nbsp;&nbsp;</td><td><br/><br/><br/><br/><br/><br/><br/><br/>New command only<pre class="shell dark">$ tree rebel<br/>rebel
+</pre></td><td>New command only<pre class="shell dark">$ tree rebel<br/>rebel
 ├── cmd
 │   ├── rebel
 │   │   └── main.go
@@ -968,7 +971,7 @@ yourself), Go disallows the import of main packages</li>
 └── rebel_test.go
 
 3 directories, 7 files
-</pre></td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>Combine option 3 with new command<pre class="shell dark">$ tree rebel<br/>rebel
+</pre></td><td>Combine option 3 with new command<pre class="shell dark">$ tree rebel<br/>rebel
 ├── cmd
 │   ├── rebel
 │   │   └── main.go

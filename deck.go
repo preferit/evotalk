@@ -319,6 +319,9 @@ func theme() *CSS {
 		"min-width: 40vw",
 		"overflow: wrap",
 	)
+	css.Style(".columns td",
+		"padding: 0 1em",
+	)
 	css.Style(".columns .shell",
 		"min-width: auto",
 	)
