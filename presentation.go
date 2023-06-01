@@ -381,42 +381,66 @@ yourself), Go disallows the import of main packages`),
 	serviceOpt(4)
 	serviceOpt(5)
 
-	d.Slide(
-		H2("Which way to go?"),
+	crawlOpt := func(show int) {
 
-		P(`I decided to go with the fifth option`),
-		shell("$ tree rebel", "ex07_5.tree"),
+		opt := func(n int, e *Element) *Element {
+			if n == 0 {
+				return Wrap()
+			}
+			if n <= show {
+				return e
+			}
+			return Wrap()
+		}
 
-		P(`The service is up and running and you get an idea of adding
+		d.Slide(
+			H2("The crawl feature"),
+
+			P(`The service is up and running and you get an idea of adding
 		a feature to package rebel for scanning the web for statements
 		that the rebel can shout. It doesn't feel like the feature
 		fits in the rebel package directly but will be used by
 		it. Let's call the feature crawl, but where to put it?`),
-	)
 
-	d.Slide(
-		H2("New feature"),
-
-		Table(Class("columns"),
-			Tr(
-				Td(
-					"Add it directly in package rebel, but keep everything private",
-					shell("$ tree rebel", "ex08_1.tree"),
-				),
-				Td(
-					Br(), Br(),
-					"Add it to an internal package",
-					shell("$ tree rebel", "ex08_2.tree"),
-					"or ", Code("internal/crawl/crawl.go"), " if it makes sense",
-				),
-				Td("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"),
-				Td(
-					Br(), Br(), Br(), Br(),
-					"Add to a sub package",
-					shell("$ tree rebel", "ex08_3.tree"),
+			Table(Class("columns"),
+				Tr(
+					Td(
+						H3(1),
+						"Add it directly in package rebel, but keep everything private",
+						opt(1,
+							Wrap(
+								shell("$ tree rebel", "ex08_1.tree"),
+							),
+						),
+					),
+					Td(
+						H3(2),
+						"Add it to an internal package",
+						opt(2,
+							Wrap(
+								shell("$ tree rebel", "ex08_2.tree"),
+								"or ", Code("internal/crawl/crawl.go"), " if it makes sense",
+							),
+						),
+					),
+					Td(
+						H3(3),
+						"Add to a sub package",
+						opt(3,
+							Wrap(
+								shell("$ tree rebel", "ex08_3.tree"),
+							),
+						),
+					),
 				),
 			),
-		),
-	)
+		)
+	}
+
+	crawlOpt(0)
+	crawlOpt(1)
+	crawlOpt(2)
+	crawlOpt(3)
+
 	return d
 }
