@@ -36,21 +36,28 @@ func Presentation() *deck {
 	d.Slide(
 		H2("func main()"),
 
-		P(`Let's kick off our project. We'll name it "rebel" and use the repository domain
+		Table(Class("columns"),
+			Tr(
+				Td(
+					P(`Let's kick off our project. We'll name it "rebel" and use the repository domain
 "github.com/preferit/rebel".
 
 We choose to create a command, ie. package main. The implications for
 our ability to evolve
 `),
-		Ol(
-			Li(`You Cannot share any logic within it with others (including
+					Ol(Class("left"),
+						Li(`You Cannot share any logic within it with others (including
 yourself), Go disallows the import of main packages`),
-			Li(`API documentation is hidden when using e.g. go doc, as a result of
+						Li(`API documentation is hidden when using e.g. go doc, as a result of
 (1)`),
+					),
+				),
+				Td(
+					shell("$ tree rebel", "ex01.tree"),
+					load("../ex/01/main.go"),
+				),
+			),
 		),
-
-		shell("$ tree rebel", "ex01.tree"),
-		load("../ex/01/main.go"),
 	)
 
 	d.Slide(

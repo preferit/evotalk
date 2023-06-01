@@ -165,6 +165,9 @@ vertical-align: top;
 td:nth-child(2) {
 padding-left: 2em;
 }
+ul.left, ol.left {
+text-align: left;
+}
 .keyword {
 color: darkviolet;
 }
@@ -254,19 +257,20 @@ but as design.</em>
 </div>
 <div class="slide" id="3"><header><h2>func main()</h2>
 </header>
-<div class="content"><p>Let's kick off our project. We'll name it "rebel" and use the repository domain
+<div class="content"><table class="columns">
+<tr><td><p>Let's kick off our project. We'll name it "rebel" and use the repository domain
 "github.com/preferit/rebel".
 
 We choose to create a command, ie. package main. The implications for
 our ability to evolve
 </p>
-<ol>
+<ol class="left">
 <li>You Cannot share any logic within it with others (including
 yourself), Go disallows the import of main packages</li>
 <li>API documentation is hidden when using e.g. go doc, as a result of
 (1)</li>
 </ol>
-<pre class="shell dark">$ tree rebel<br/>rebel
+</td><td><pre class="shell dark">$ tree rebel<br/>rebel
 ├── go.mod
 └── main.go
 
@@ -285,6 +289,8 @@ yourself), Go disallows the import of main packages</li>
 <span class=line><i> 12</i>     fmt.Println("We are Rebelz!")</span>
 <span class=line><i> 13</i> }</span>
 <span class=line><i> 14</i> </span></code></pre></div>
+</td></tr>
+</table>
 </div>
 <nav><ul>
 <li><a href="#1">1</a></li>

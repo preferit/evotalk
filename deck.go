@@ -363,7 +363,9 @@ func theme() *CSS {
 	css.Style("td:nth-child(2)",
 		"padding-left: 2em",
 	)
-
+	css.Style("ul.left, ol.left",
+		"text-align: left",
+	)
 	return css
 }
 
