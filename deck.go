@@ -13,89 +13,6 @@ import (
 	"github.com/gregoryv/web/files"
 )
 
-// ----------------------------------------
-// helpers
-// ----------------------------------------
-
-func load(src string) *Element {
-	v := mustLoad(src)
-	v = strings.ReplaceAll(v, "\t", "    ")
-	v = highlight(v)
-	v = numLines(v, 1)
-	return Div(
-		Class("srcfile"),
-		Pre(Code(v)),
-	)
-}
-
-func loadFunc(file, src string) *Element {
-	v := files.MustLoadFunc(file, src)
-	v = strings.ReplaceAll(v, "\t", "    ")
-	v = highlight(v)
-	return Div(
-		Class("srcfile"),
-		Pre(Code(v)),
-	)
-}
-
-func numLines(v string, n int) string {
-	lines := strings.Split(v, "\n")
-	for i, l := range lines {
-		lines[i] = fmt.Sprintf("<span class=line><i>%3v</i> %s</span>", n, l)
-		n++
-	}
-	return strings.Join(lines, "\n")
-}
-
-func godoc(pkg, short string) *Element {
-	var out []byte
-	if short != "" {
-		out, _ = exec.Command("go", "doc", short, pkg).Output()
-	} else {
-		out, _ = exec.Command("go", "doc", pkg).Output()
-	}
-	v := string(out)
-	v = strings.ReplaceAll(v, "\t", "    ")
-	v = highlightGoDoc(v)
-	return Wrap(
-		Pre(v),
-		A(Attr("target", "_blank"),
-			Href("https://pkg.go.dev/"+pkg),
-			"pkg.go.dev/", pkg,
-		),
-	)
-}
-
-func shell(cmd, filename string) *Element {
-	v := mustLoad(filename)
-	return Pre(Class("shell dark"), cmd, Br(), v)
-}
-
-func mustLoad(src string) string {
-	data, err := os.ReadFile(src)
-	if err != nil {
-		log.Fatal(err)
-	}
-	return string(data)
-}
-
-func mustLoadLines(filename string, from, to int) *Element {
-	v := files.MustLoadLines(filename, from, to)
-
-	v = strings.ReplaceAll(v, "\t", "    ")
-	v = highlight(v)
-	v = numLines(v, from)
-	return Div(
-		Class("srcfile"),
-		Pre(Code(v)),
-	)
-}
-
-//go:embed docs/enhance.js
-var enhancejs string
-
-// ----------------------------------------
-
 // newDeck returns a Deck with default styling and navigation on bottom
 func newDeck() *Deck {
 	return &Deck{
@@ -369,6 +286,86 @@ func theme() *CSS {
 	return css
 }
 
+// ----------------------------------------
+// helpers
+// ----------------------------------------
+
+func load(src string) *Element {
+	v := mustLoad(src)
+	v = strings.ReplaceAll(v, "\t", "    ")
+	v = highlight(v)
+	v = numLines(v, 1)
+	return Div(
+		Class("srcfile"),
+		Pre(Code(v)),
+	)
+}
+
+func loadFunc(file, src string) *Element {
+	v := files.MustLoadFunc(file, src)
+	v = strings.ReplaceAll(v, "\t", "    ")
+	v = highlight(v)
+	return Div(
+		Class("srcfile"),
+		Pre(Code(v)),
+	)
+}
+
+func numLines(v string, n int) string {
+	lines := strings.Split(v, "\n")
+	for i, l := range lines {
+		lines[i] = fmt.Sprintf("<span class=line><i>%3v</i> %s</span>", n, l)
+		n++
+	}
+	return strings.Join(lines, "\n")
+}
+
+func godoc(pkg, short string) *Element {
+	var out []byte
+	if short != "" {
+		out, _ = exec.Command("go", "doc", short, pkg).Output()
+	} else {
+		out, _ = exec.Command("go", "doc", pkg).Output()
+	}
+	v := string(out)
+	v = strings.ReplaceAll(v, "\t", "    ")
+	v = highlightGoDoc(v)
+	return Wrap(
+		Pre(v),
+		A(Attr("target", "_blank"),
+			Href("https://pkg.go.dev/"+pkg),
+			"pkg.go.dev/", pkg,
+		),
+	)
+}
+
+func shell(cmd, filename string) *Element {
+	v := mustLoad(filename)
+	return Pre(Class("shell dark"), cmd, Br(), v)
+}
+
+func mustLoad(src string) string {
+	data, err := os.ReadFile(src)
+	if err != nil {
+		log.Fatal(err)
+	}
+	return string(data)
+}
+
+func mustLoadLines(filename string, from, to int) *Element {
+	v := files.MustLoadLines(filename, from, to)
+
+	v = strings.ReplaceAll(v, "\t", "    ")
+	v = highlight(v)
+	v = numLines(v, from)
+	return Div(
+		Class("srcfile"),
+		Pre(Code(v)),
+	)
+}
+
+// ----------------------------------------
+
 // highlight go source code
 func highlight(v string) string {
 	v = keywords.ReplaceAllString(v, `$1<span class="keyword">$2</span>$3`)
@@ -397,3 +394,8 @@ func highlightColors() *CSS {
 	css.Style(".comment, .comment>span", "color: darkgreen")
 	return css
 }
+
+// ----------------------------------------
+
+//go:embed docs/enhance.js
+var enhancejs string
