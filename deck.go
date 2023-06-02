@@ -110,7 +110,6 @@ func theme() *CSS {
 		"padding: 0 0",
 	)
 	css.Style(".slide",
-		//"border: 3px solid magenta",
 		"margin: 0 0",
 		"padding: 0 0",
 		"text-align: center",
@@ -137,9 +136,9 @@ func theme() *CSS {
 		"text-align: left",
 	)
 
+	// ----------------------------------------
 	// navbar
 	css.Style(".slide nav",
-		// "border: 3px solid green",
 		"display: block",
 		"margin: 0 0",
 		"padding: 0 0",
@@ -169,7 +168,8 @@ func theme() *CSS {
 		"cursor: pointer",
 	)
 
-	// goish colors
+	// ----------------------------------------
+	// Go:ish colors
 	css.Style("a:link, a:visited",
 		"color: #007d9c",
 		"text-decoration: none",
@@ -188,9 +188,10 @@ func theme() *CSS {
 		"text-align: center",
 	)
 	css.Style(".twocolumn",
-		// "border: 3px solid brown",
 		"width: 100%",
 	)
+	// ----------------------------------------
+	// source code
 	css.Style(".srcfile",
 		"margin-top: 1.6em",
 		"margin-bottom: 1.6em",
@@ -202,7 +203,6 @@ func theme() *CSS {
 		"-moz-tab-size: 4",
 		"min-width: 35vw",
 	)
-
 	css.Style(".srcfile code",
 		"padding: .6em 0 2vh 0",
 		"background-image: url(\"printout-whole.png\")",
@@ -227,21 +227,21 @@ func theme() *CSS {
 		"font-style: normal",
 		"color: #a2a2a2",
 	)
-
-	// toc
-	css.Style("li.h3",
-		"margin-left: 2em",
-	)
 	css.Style(".shell",
 		"padding: 1em",
 		"border-radius: 10px",
 		"min-width: 40vw",
 		"overflow: wrap",
 	)
+
+	// ----------------------------------------
+	// table of contents
+	css.Style("li.h3",
+		"margin-left: 2em",
+	)
 	css.Style("table.columns",
 		"width: 100%",
 	)
-
 	css.Style(".columns td",
 		"padding: 0 1em",
 		"width: 19%",
@@ -273,7 +273,6 @@ func theme() *CSS {
 	css.Style(".group:first-child",
 		"margin-left: 5vw",
 	)
-
 	css.Style("td",
 		"vertical-align: top",
 	)
@@ -288,7 +287,6 @@ func theme() *CSS {
 
 // ----------------------------------------
 // helpers
-// ----------------------------------------
 
 func load(src string) *Element {
 	v := mustLoad(src)
@@ -397,5 +395,5 @@ func highlightColors() *CSS {
 
 // ----------------------------------------
 
-//go:embed docs/enhance.js
+//go:embed enhance.js
 var enhancejs string
