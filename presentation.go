@@ -6,7 +6,7 @@ import (
 	. "github.com/gregoryv/web"
 )
 
-func Presentation() *deck {
+func Presentation() *Deck {
 	d := newDeck()
 	d.Title = "Go; Design for change"
 	d.Styles = append(d.Styles,

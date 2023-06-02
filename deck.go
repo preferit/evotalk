@@ -96,29 +96,29 @@ var enhancejs string
 
 // ----------------------------------------
 
-// newDeck returns a deck with default styling and navigation on bottom
-func newDeck() *deck {
-	return &deck{
+// newDeck returns a Deck with default styling and navigation on bottom
+func newDeck() *Deck {
+	return &Deck{
 		Styles: []*CSS{},
 	}
 }
 
-// Had this idea of a deck of slides; turned out to be less
+// Had this idea of a Deck of slides; turned out to be less
 // useful. Leaving it here for now.
-type deck struct {
+type Deck struct {
 	Title  string // header title
 	Slides []*Element
-	Styles []*CSS // first one is the deck default styling
+	Styles []*CSS // first one is the Deck default styling
 }
 
 // Slide appends a new slide to the deck. elements can be anything
 // supported by the web package.
-func (d *deck) Slide(elements ...interface{}) {
+func (d *Deck) Slide(elements ...interface{}) {
 	d.Slides = append(d.Slides, Wrap(elements...))
 }
 
 // Page returns a web page ready for use.
-func (d *deck) Page() *Page {
+func (d *Deck) Page() *Page {
 	styles := Style()
 	for _, s := range d.Styles {
 		styles.With(s)
