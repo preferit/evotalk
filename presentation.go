@@ -7,7 +7,7 @@ import (
 )
 
 func Presentation() *Deck {
-	d := newDeck()
+	d := NewDeck()
 	d.Title = "Go; Design for change"
 	d.Styles = append(d.Styles,
 		theme(),
