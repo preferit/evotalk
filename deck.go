@@ -13,23 +13,23 @@ import (
 	"github.com/gregoryv/web/files"
 )
 
-// NewDeck returns a Deck with default styling and navigation on bottom
+// NewDeck returns a Deck with default styling and navigation.
 func NewDeck() *Deck {
 	return &Deck{
-		Styles: []*CSS{},
+		Slides: make([]*Element, 0),
+		Styles: make([]*CSS, 0),
 	}
 }
 
-// Had this idea of a Deck of slides; turned out to be less
-// useful. Leaving it here for now.
+// Deck represents a deck of slides, ie. a presentation.
 type Deck struct {
 	Title  string // header title
 	Slides []*Element
-	Styles []*CSS // first one is the Deck default styling
+	Styles []*CSS
 }
 
 // Slide appends a new slide to the deck. elements can be anything
-// supported by the web package.
+// supported by package gregoryv/web.
 func (d *Deck) Slide(elements ...interface{}) {
 	d.Slides = append(d.Slides, Wrap(elements...))
 }
