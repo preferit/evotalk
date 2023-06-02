@@ -215,12 +215,12 @@ color: darkgreen;
 </div>
 <div class="slide" id="2"><header><h2>Story</h2>
 </header>
-<div class="content"><p>From the simplest "func main" to a large service. What choices to
-consider when your project grows and how to keep it on track for
-future changes.<br/>We begin with hello world and then evolve it along a story path.
-Along the way depending on the choices we make, the <b>design</b> of our
-project will change. <em>I'll refer to directory layout, not as structure
-but as design.</em></p>
+<div class="content"><p>From the simplest "func main" to a large service. What
+        choices to consider when your project grows and how to keep it
+        on track for future changes.<br/>We begin with hello world and then evolve it along a story
+        path.  Along the way depending on the choices we make, the
+        <b>design</b> of our project will change. <em>I'll refer to
+        directory layout, not as structure but as design.</em></p>
 <img src="people.png"/></div>
 <nav><ul>
 <li><a href="#1">1</a></li>
@@ -255,17 +255,17 @@ but as design.</em></p>
 <div class="slide" id="3"><header><h2>func main()</h2>
 </header>
 <div class="content"><table class="columns">
-<tr><td><p>Let's kick off our project. We'll name it "rebel" and use the repository domain
-"github.com/preferit/rebel".
-
-We choose to create a command, ie. package main. The implications for
-our ability to evolve
-</p>
+<tr><td><p>Let's kick off our project. We'll name it
+                    "rebel" and use the repository domain
+                    "github.com/preferit/rebel". We choose to create
+                    a command, ie. package main. The implications for
+                    our ability to evolve </p>
 <ol class="left">
-<li>You Cannot share any logic within it with others (including
-yourself), Go disallows the import of main packages</li>
-<li>API documentation is hidden when using e.g. go doc, as a result of
-(1)</li>
+<li>You Cannot share any logic within it with
+                        others (including yourself), Go disallows the
+                        import of main packages</li>
+<li>API documentation is hidden when using
+                        e.g. go doc, as a result of (1)</li>
 </ol>
 </td><td><pre class="shell dark">$ tree rebel<br/>rebel
 ├── go.mod

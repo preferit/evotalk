@@ -21,14 +21,14 @@ func Presentation() *Deck {
 	d.Slide(
 		H2("Story"),
 
-		P(`From the simplest "func main" to a large service. What choices to
-consider when your project grows and how to keep it on track for
-future changes.`, Br(),
+		P(`From the simplest "func main" to a large service. What
+        choices to consider when your project grows and how to keep it
+        on track for future changes.`, Br(),
 
-			`We begin with hello world and then evolve it along a story path.
-Along the way depending on the choices we make, the <b>design</b> of our
-project will change. <em>I'll refer to directory layout, not as structure
-but as design.</em>`),
+			`We begin with hello world and then evolve it along a story
+        path.  Along the way depending on the choices we make, the
+        <b>design</b> of our project will change. <em>I'll refer to
+        directory layout, not as structure but as design.</em>`),
 
 		Img(Src("people.png")),
 	)
@@ -39,17 +39,21 @@ but as design.</em>`),
 		Table(Class("columns"),
 			Tr(
 				Td(
-					P(`Let's kick off our project. We'll name it "rebel" and use the repository domain
-"github.com/preferit/rebel".
 
-We choose to create a command, ie. package main. The implications for
-our ability to evolve
-`),
+					P(`Let's kick off our project. We'll name it
+                    "rebel" and use the repository domain
+                    "github.com/preferit/rebel". We choose to create
+                    a command, ie. package main. The implications for
+                    our ability to evolve `),
+
 					Ol(Class("left"),
-						Li(`You Cannot share any logic within it with others (including
-yourself), Go disallows the import of main packages`),
-						Li(`API documentation is hidden when using e.g. go doc, as a result of
-(1)`),
+
+						Li(`You Cannot share any logic within it with
+                        others (including yourself), Go disallows the
+                        import of main packages`),
+
+						Li(`API documentation is hidden when using
+                        e.g. go doc, as a result of (1)`),
 					),
 				),
 				Td(
@@ -90,7 +94,8 @@ yourself), Go disallows the import of main packages`),
 			Tr(
 				Td(
 					Img(Src("youmaxlisa.png")),
-				), Td(
+				),
+				Td(
 
 					Pre(`
 - Max:  Would be nice to see that phrase when I login as the message of the day
