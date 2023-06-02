@@ -17,7 +17,7 @@ import (
 func NewDeck() *Deck {
 	return &Deck{
 		Slides: make([]*Element, 0),
-		Styles: make([]*CSS, 0),
+		Styles: []*CSS{DefaultTheme(), HighlightColors()},
 	}
 }
 
@@ -99,8 +99,8 @@ func (b *navbar) next() *Element {
 }
 
 // ----------------------------------------
-
-func theme() *CSS {
+// styling
+func DefaultTheme() *CSS {
 	css := NewCSS()
 	css.Import("https://fonts.googleapis.com/css?family=Inconsolata|Source+Sans+Pro")
 
@@ -364,6 +364,14 @@ func mustLoadLines(filename string, from, to int) *Element {
 
 // ----------------------------------------
 
+func HighlightColors() *CSS {
+	css := NewCSS()
+	css.Style(".keyword", "color: darkviolet")
+	css.Style(".type", "color: dodgerblue")
+	css.Style(".comment, .comment>span", "color: darkgreen")
+	return css
+}
+
 // highlight go source code
 func highlight(v string) string {
 	v = keywords.ReplaceAllString(v, `$1<span class="keyword">$2</span>$3`)
@@ -384,14 +392,6 @@ var types = regexp.MustCompile(`(\W)(\w+\.\w+)(\)|\n)`)
 var keywords = regexp.MustCompile(`(\W?)(^package|const|select|defer|import|for|func|range|return|go|var|switch|if|case|label|type|struct|interface)(\W)`)
 var docKeywords = regexp.MustCompile(`(\W?)(^package|func|type|struct|interface)(\W)`)
 var comments = regexp.MustCompile(`(//[^\n]*)`)
-
-func highlightColors() *CSS {
-	css := NewCSS()
-	css.Style(".keyword", "color: darkviolet")
-	css.Style(".type", "color: dodgerblue")
-	css.Style(".comment, .comment>span", "color: darkgreen")
-	return css
-}
 
 // ----------------------------------------
 

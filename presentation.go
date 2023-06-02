@@ -9,10 +9,6 @@ import (
 func Presentation() *Deck {
 	d := NewDeck()
 	d.Title = "Go; Design for change"
-	d.Styles = append(d.Styles,
-		theme(),
-		highlightColors(),
-	)
 
 	d.Slide(
 		H2("Go; Design for change"),
