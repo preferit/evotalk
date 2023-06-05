@@ -68,9 +68,8 @@ func Presentation() *Deck {
 		H2("You code along.."),
 
 		P(`This is a starting point; you have no intention to share
-        any logic you only want to use the command yourself. You are
-        happy and code along the nice feature of randomizing rebelious
-        statements.`),
+        any logic, the command for you alone. You are happy and code
+        along the nice feature of randomizing rebelious statements.`),
 
 		LayoutTwoCol(
 			load("../ex/02/main.go"),
