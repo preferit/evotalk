@@ -75,6 +75,9 @@ func (d *Deck) Page() *Page {
 	)
 }
 
+// ----------------------------------------
+// navbar
+
 func newNavbar() *navbar {
 	return &navbar{
 		current:      1,

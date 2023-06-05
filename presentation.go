@@ -264,7 +264,7 @@ func Presentation() *Deck {
 				),
 				Td(
 					load("../ex/06/rebel.go"),
-				),
+				),				
 			),
 		),
 
@@ -401,14 +401,12 @@ func Presentation() *Deck {
 
 	crawlOpt := func(show int) {
 
+		// opt returns the given e if n is less or equal to show
 		opt := func(n int, e *Element) *Element {
-			if n == 0 {
+			if n == 0 || n > show {
 				return Wrap()
 			}
-			if n <= show {
-				return e
-			}
-			return Wrap()
+			return e
 		}
 
 		d.Slide(
@@ -420,61 +418,59 @@ func Presentation() *Deck {
 		fits in the rebel package directly but will be used by
 		it. Let's call the feature crawl, but where to put it?`),
 
-			Table(Class("columns"),
-				Tr(
-					Td(
-						H3(1),
-						"Add it directly in package rebel",
-						opt(1,
-							Wrap(
-								shell("$ tree rebel", "ex08_1.tree"),
-								H4("Pros"),
-								Ul(
-									Li(Em("Easy to edit initially")),
-								),
-								H4("Cons"),
-								Ul(
-									Li("Tightly coupled with the rebel domain logic"),
-								),
+			Table(Class("columns"), Tr(
+				Td(
+					H3(1),
+					"Add it directly in package rebel",
+					opt(1,
+						Wrap(
+							shell("$ tree rebel", "ex08_1.tree"),
+							H4("Pros"),
+							Ul(
+								Li(Em("Easy to edit initially")),
 							),
-						),
-					),
-					Td(
-						H3(2),
-						"Add it to an internal/crawl package",
-						opt(2,
-							Wrap(
-								shell("$ tree rebel", "ex08_2.tree"),
-								H4("Pros"),
-								Ul(
-									Li("Decoupled from domain logic"),
-									Li("Cannot be imported by modules outside of the rebel module"),
-								),
-								H4("Cons"),
-								Ul(
-									Li("Can be imported by packages within this modules that you might want to move"),
-								),
-							),
-						),
-					),
-					Td(
-						H3(3),
-						"Add to a sub package",
-						opt(3,
-							Wrap(
-								shell("$ tree rebel", "ex08_3.tree"),
-								H4("Pros"),
-								Ul(
-									Li("Decoupled from domain logic"),
-								),
-								H4("Cons"),
-								Ul(
-									Li("You immediately need to be aware of it being importable"),
-								),
+							H4("Cons"),
+							Ul(
+								Li("Tightly coupled with the rebel domain logic"),
 							),
 						),
 					),
 				),
+				Td(
+					H3(2),
+					"Add it to an internal/crawl package",
+					opt(2,
+						Wrap(
+							shell("$ tree rebel", "ex08_2.tree"),
+							H4("Pros"),
+							Ul(
+								Li("Decoupled from domain logic"),
+								Li("Cannot be imported by modules outside of the rebel module"),
+							),
+							H4("Cons"),
+							Ul(
+								Li("Can be imported by packages within this modules that you might want to move"),
+							),
+						),
+					),
+				),
+				Td(
+					H3(3),
+					"Add to a sub package",
+					opt(3,
+						Wrap(
+							shell("$ tree rebel", "ex08_3.tree"),
+							H4("Pros"),
+							Ul(
+								Li("Decoupled from domain logic"),
+							),
+							H4("Cons"),
+							Ul(
+								Li("You immediately need to be aware of it being importable"),
+							),
+						),
+					),
+				)), // end TR
 			),
 		)
 	}
