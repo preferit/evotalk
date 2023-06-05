@@ -18,6 +18,7 @@ func NewDeck() *Deck {
 	return &Deck{
 		Slides: make([]*Element, 0),
 		Styles: []*CSS{DefaultTheme(), HighlightColors()},
+		nav:    newNavbar(),
 	}
 }
 
@@ -26,12 +27,19 @@ type Deck struct {
 	Title  string // header title
 	Slides []*Element
 	Styles []*CSS
+
+	nav *navbar
 }
 
 // Slide appends a new slide to the deck. elements can be anything
 // supported by package gregoryv/web.
 func (d *Deck) Slide(elements ...interface{}) {
 	d.Slides = append(d.Slides, Wrap(elements...))
+	d.nav.max = len(d.Slides)
+}
+
+func (d *Deck) GroupEnd() {
+	d.nav.groupEnd(len(d.Slides) + 1)
 }
 
 // Page returns a web page ready for use.
@@ -41,7 +49,6 @@ func (d *Deck) Page() *Page {
 		styles.With(s)
 	}
 	body := Body()
-	nav := &navbar{current: 1, max: len(d.Slides)}
 	for i, content := range d.Slides {
 		j := i + 1
 		id := fmt.Sprintf("%v", j)
@@ -52,7 +59,7 @@ func (d *Deck) Page() *Page {
 		)
 		div := Div(Class("content"))
 		div.With(content.Children[1:]...)
-		slide.With(div, nav.next())
+		slide.With(div, d.nav.next())
 		body.With(slide)
 	}
 	body.With(Script(enhancejs))
@@ -68,19 +75,27 @@ func (d *Deck) Page() *Page {
 	)
 }
 
+func newNavbar() *navbar {
+	return &navbar{
+		current:      1,
+		groupDivider: make(map[int]bool),
+	}
+}
+
 type navbar struct {
 	max     int // number of slides
 	current int // current slide
+
+	groupDivider map[int]bool
+}
+
+func (b *navbar) groupEnd(v int) {
+	b.groupDivider[v] = true
 }
 
 // BuildElement is called at time of rendering
 func (b *navbar) next() *Element {
 	ul := Ul()
-	groupDivider := map[int]bool{
-		12: true,
-		18: true,
-		22: true,
-	}
 
 	for i := 0; i < b.max; i++ {
 		j := i + 1
@@ -89,7 +104,7 @@ func (b *navbar) next() *Element {
 		if j == b.current {
 			li.With(Class("current"))
 		}
-		if groupDivider[j] {
+		if b.groupDivider[j] {
 			ul.With(Li(" | "))
 		}
 		ul.With(li)

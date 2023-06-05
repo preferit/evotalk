@@ -274,6 +274,9 @@ func Presentation() *Deck {
         way that they may be used by Lisa as well as Max.`),
 	)
 
+	// ----------------------------------------
+	d.GroupEnd()
+
 	serviceOpt := func(show int) {
 
 		opt := func(n int, e *Element) *Element {
@@ -393,6 +396,9 @@ func Presentation() *Deck {
 	serviceOpt(4)
 	serviceOpt(5)
 
+	// ----------------------------------------
+	d.GroupEnd()
+
 	crawlOpt := func(show int) {
 
 		opt := func(n int, e *Element) *Element {
@@ -477,6 +483,9 @@ func Presentation() *Deck {
 	crawlOpt(1)
 	crawlOpt(2)
 	crawlOpt(3)
+
+	// ----------------------------------------
+	d.GroupEnd()
 
 	d.Slide(
 		H2("The team grows"),
