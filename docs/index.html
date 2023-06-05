@@ -33,6 +33,12 @@ overflow: auto;
 .slide ul, p, pre {
 text-align: left;
 }
+.layout {
+width: 100%;
+}
+.twocol tr td {
+width: 50%;
+}
 .slide nav {
 display: block;
 margin: 0 0;
@@ -325,7 +331,7 @@ color: darkgreen;
         any logic you only want to use the command yourself. You are
         happy and code along the nice feature of randomizing rebelious
         statements.</p>
-<table>
+<table class="layout twocol">
 <tr><td><div class="srcfile"><pre><code><span class=line><i>  1</i> <span class="comment">// Command rebel generates rebelious statement.</span></span>
 <span class=line><i>  2</i> package main</span>
 <span class=line><i>  3</i> </span>
@@ -363,8 +369,8 @@ color: darkgreen;
 └── main.go
 
 0 directories, 2 files
-</pre><p>At this point your coworkers Max and Lisa see
-                    the work and you end up in a discussion;</p>
+</pre><p>At this point your coworkers Max and Lisa see the work
+            and you end up in a discussion;</p>
 </td></tr>
 </table>
 </div>
@@ -400,16 +406,15 @@ color: darkgreen;
 </div>
 <div class="slide" id="5"><header><h2>Share with friends</h2>
 </header>
-<div class="content"><table>
+<div class="content"><table class="layout twocol">
 <tr><td><img src="youmaxlisa.png"/></td><td><pre>
 - Max:  Would be nice to see that phrase when I login as the message of the day
 - You:  Easy peasy, just go install ... and run it.
 - Lisa: Can we include it on the intranet?
 - You:  Hmm.. (you pause and start thinking)
 - You:  Not really; you could use the binary, but it would be slow with all the
-        traffic we have</pre><p>Here you are faced with a decision on how to share
-                the logic of generating a random rebelious
-                statement.</p>
+        traffic we have</pre><p>Here you are faced with a decision on how to share the
+            logic of generating a random rebelious statement.</p>
 <ol>
 <li>Redesign the logic as an importable package or</li>
 <li>Write a small service with an API.</li>
@@ -459,7 +464,7 @@ color: darkgreen;
         importable package while also keeping the command. First
         attempt; keep command in root and create a package with logic
         to generate the phrases.</p>
-<table>
+<table class="layout twocol">
 <tr><td><pre class="shell dark">$ tree rebel<br/>rebel
 ├── go.mod
 ├── main.go
@@ -548,7 +553,7 @@ color: darkgreen;
         make changes as freely as possible without affecting the
         stakeholders. Before we release these changes can we improve
         the design?</p>
-<table>
+<table class="layout twocol">
 <tr><td><pre class="shell dark">$ tree rebel<br/>rebel
 ├── go.mod
 ├── main.go
@@ -635,7 +640,7 @@ color: darkgreen;
 </div>
 <div class="slide" id="8"><header><h2>Fix the repetition when used as a command</h2>
 </header>
-<div class="content"><table>
+<div class="content"><table class="layout twocol">
 <tr><td><pre class="shell dark">$ tree rebel<br/>rebel
 ├── go.mod
 ├── main.go
@@ -680,9 +685,10 @@ color: darkgreen;
 <li>Max can install it simply with <code>go install github.com/preferit/rebel@latest</code></li>
 </ul>
 <p>It feels ok, current needs are met. You and Max quickly
-        notice that the same phrase appears over and over and add a
-        the feature of keeping last shouted phrase in a temporary file
-        to minimize the repetition when you run your commands.</p>
+            notice that the same phrase appears over and over and add
+            a the feature of keeping last shouted phrase in a
+            temporary file to minimize the repetition when you run
+            your commands.</p>
 <div class="srcfile"><pre><code><span class=line><i>  1</i> <span class="keyword">package</span> phrase</span>
 <span class=line><i>  2</i> </span>
 <span class=line><i>  3</i> <span class="keyword">import</span> (</span>
@@ -808,7 +814,7 @@ color: darkgreen;
         inside the phrase package, why? <em>phrases don't shout, rebels
         do</em>. So if we want to keep func Shout in the package rebel And
         we want to share it with Lisa, how do we solve that?</p>
-<table>
+<table class="layout twocol">
 <tr><td><pre class="shell dark">$ tree rebel<br/>rebel
 ├── go.mod
 ├── main.go
@@ -895,7 +901,7 @@ color: darkgreen;
 </div>
 <div class="slide" id="11"><header><h2>Move command, keep domain logic</h2>
 </header>
-<div class="content"><table>
+<div class="content"><table class="layout twocol">
 <tr><td><pre class="shell dark">$ tree rebel<br/>rebel
 ├── cmd
 │   └── rebel

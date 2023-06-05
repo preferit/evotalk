@@ -76,6 +76,30 @@ func (d *Deck) Page() *Page {
 }
 
 // ----------------------------------------
+// layouts
+
+func LayoutTwoCol(v ...interface{}) *Element {
+	tr := Tr()
+	td := Td()
+	for _, v := range v {
+		switch v := v.(type) {
+		case string:
+			if v == "----" {
+				tr.With(td)
+				td = Td()
+				tr.With(td)
+			} else {
+				td.With(v)
+			}
+		default:
+			td.With(v)
+		}
+	}
+
+	return Table(Class("layout twocol"), tr)
+}
+
+// ----------------------------------------
 // navbar
 
 func newNavbar() *navbar {
@@ -152,6 +176,15 @@ func DefaultTheme() *CSS {
 	)
 	css.Style(".slide ul, p, pre",
 		"text-align: left",
+	)
+
+	// ----------------------------------------
+	// layout
+	css.Style(".layout",
+		"width: 100%",
+	)
+	css.Style(".twocol tr td",
+		"width: 50%",
 	)
 
 	// ----------------------------------------

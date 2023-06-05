@@ -72,32 +72,24 @@ func Presentation() *Deck {
         happy and code along the nice feature of randomizing rebelious
         statements.`),
 
-		Table(
-			Tr(
-				Td(
-					load("../ex/02/main.go"),
-				),
-				Td(
-					shell("$ tree rebel", "ex02.tree"),
+		LayoutTwoCol(
+			load("../ex/02/main.go"),
+			"----",
+			shell("$ tree rebel", "ex02.tree"),
 
-					P(`At this point your coworkers Max and Lisa see
-                    the work and you end up in a discussion;`),
-				),
-			),
+			P(`At this point your coworkers Max and Lisa see the work
+            and you end up in a discussion;`),
 		),
 	)
 
 	d.Slide(
 		H2("Share with friends"),
 
-		Table(
-			Tr(
-				Td(
-					Img(Src("youmaxlisa.png")),
-				),
-				Td(
+		LayoutTwoCol(
+			Img(Src("youmaxlisa.png")),
+			"----",
 
-					Pre(`
+			Pre(`
 - Max:  Would be nice to see that phrase when I login as the message of the day
 - You:  Easy peasy, just go install ... and run it.
 - Lisa: Can we include it on the intranet?
@@ -105,23 +97,20 @@ func Presentation() *Deck {
 - You:  Not really; you could use the binary, but it would be slow with all the
         traffic we have`),
 
-					P(`Here you are faced with a decision on how to share
-                the logic of generating a random rebelious
-                statement.`),
+			P(`Here you are faced with a decision on how to share the
+            logic of generating a random rebelious statement.`),
 
-					Ol(
-						Li(`Redesign the logic as an importable package or`),
-						Li(`Write a small service with an API.`),
-						Li(`Share the data only and let them figure it out`),
-					),
+			Ol(
+				Li(`Redesign the logic as an importable package or`),
+				Li(`Write a small service with an API.`),
+				Li(`Share the data only and let them figure it out`),
+			),
 
-					P(`The first and second option will both require some
+			P(`The first and second option will both require some
                effort. As the consumers are your friiends the first
                seems more fitting and much easier to do. The third
                option, though viable, does not help this presentation
                :-).`),
-				),
-			),
 		),
 	)
 
@@ -133,16 +122,11 @@ func Presentation() *Deck {
         attempt; keep command in root and create a package with logic
         to generate the phrases.`),
 
-		Table(
-			Tr(
-				Td(
-					shell("$ tree rebel", "ex03.tree"),
-					load("../ex/03/main.go"),
-				),
-				Td(
-					load("../ex/03/phrase/phrase.go"),
-				),
-			),
+		LayoutTwoCol(
+			shell("$ tree rebel", "ex03.tree"),
+			load("../ex/03/main.go"),
+			"----",
+			load("../ex/03/phrase/phrase.go"),
 		),
 	)
 
@@ -155,47 +139,39 @@ func Presentation() *Deck {
         stakeholders. Before we release these changes can we improve
         the design?`),
 
-		Table(
-			Tr(
-				Td(
-					shell("$ tree rebel", "ex04.tree"),
-					load("../ex/04/main.go"),
-				),
-				Td(
-					load("../ex/04/phrase/phrase.go"),
-				),
-			),
+		LayoutTwoCol(
+			shell("$ tree rebel", "ex04.tree"),
+			load("../ex/04/main.go"),
+			"----",
+			load("../ex/04/phrase/phrase.go"),
 		),
 	)
 
 	d.Slide(
 		H2("Fix the repetition when used as a command"),
 
-		Table(
-			Tr(
-				Td(
+		LayoutTwoCol(
+			shell("$ tree rebel", "ex05.tree"),
+			load("../ex/05/main.go"),
+			"----",
+			P(`What are the implications of our current design?`),
 
-					shell("$ tree rebel", "ex05.tree"),
-					load("../ex/05/main.go"),
+			Ul(
+				Li("Lisa can import it with ",
+					Code("import github.com/preferit/rebel/phrase"),
 				),
-				Td(
-					P(`What are the implications of our current design?`),
-
-					Ul(
-						Li("Lisa can import it with ",
-							Code("import github.com/preferit/rebel/phrase"),
-						),
-						Li("Max can install it simply with ",
-							Code("go install github.com/preferit/rebel@latest"),
-						),
-					),
-					P(`It feels ok, current needs are met. You and Max quickly
-        notice that the same phrase appears over and over and add a
-        the feature of keeping last shouted phrase in a temporary file
-        to minimize the repetition when you run your commands.`),
-					load("../ex/05/phrase/phrase.go"),
+				Li("Max can install it simply with ",
+					Code("go install github.com/preferit/rebel@latest"),
 				),
 			),
+
+			P(`It feels ok, current needs are met. You and Max quickly
+            notice that the same phrase appears over and over and add
+            a the feature of keeping last shouted phrase in a
+            temporary file to minimize the repetition when you run
+            your commands.`),
+
+			load("../ex/05/phrase/phrase.go"),
 		),
 	)
 
@@ -239,16 +215,11 @@ func Presentation() *Deck {
         do</em>. So if we want to keep func Shout in the package rebel And
         we want to share it with Lisa, how do we solve that?`),
 
-		Table(
-			Tr(
-				Td(
-					shell("$ tree rebel", "ex04.tree"),
-					load("../ex/04/main.go"),
-				),
-				Td(
-					load("../ex/04/phrase/phrase.go"),
-				),
-			),
+		LayoutTwoCol(
+			shell("$ tree rebel", "ex04.tree"),
+			load("../ex/04/main.go"),
+			"----",
+			load("../ex/04/phrase/phrase.go"),
 		),
 
 		B(`Move command, keep domain logic.`),
@@ -256,16 +227,11 @@ func Presentation() *Deck {
 
 	d.Slide(
 		H2("Move command, keep domain logic"),
-		Table(
-			Tr(
-				Td(
-					shell("$ tree rebel", "ex06.tree"),
-					load("../ex/06/cmd/rebel/main.go"),
-				),
-				Td(
-					load("../ex/06/rebel.go"),
-				),				
-			),
+		LayoutTwoCol(
+			shell("$ tree rebel", "ex06.tree"),
+			load("../ex/06/cmd/rebel/main.go"),
+			"----",
+			load("../ex/06/rebel.go"),
 		),
 
 		P(`This design, is as effortless as the first attempt at the
@@ -273,7 +239,6 @@ func Presentation() *Deck {
         logic. It also forces you to design rebel features in such a
         way that they may be used by Lisa as well as Max.`),
 	)
-
 	// ----------------------------------------
 	d.GroupEnd()
 
