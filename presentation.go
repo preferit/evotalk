@@ -373,6 +373,7 @@ func Presentation() *Deck {
 						opt(5,
 							Wrap(
 								shell("$ tree rebel", "ex07_5.tree"),
+								P("Let's go with this one. Lisa got her service and Max is unaffected by the change."),
 							),
 						),
 					),
@@ -435,7 +436,7 @@ func Presentation() *Deck {
 							shell("$ tree rebel", "ex08_2.tree"),
 							H4("Pros"),
 							Ul(
-								Li("Decoupled from domain logic"),
+								Li("Separated from domain logic"),
 								Li("Cannot be imported by modules outside of the rebel module"),
 							),
 							H4("Cons"),
