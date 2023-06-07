@@ -11,15 +11,15 @@ func Presentation() *Deck {
 	d.Title = "Go; Design for change"
 
 	d.Slide(
-		H2("Go; Design for change"),
+		Wrap(
+			H2("Go; Design for change"),
+			Span("Gregory Vinčić, 2023"),
+		),
 		A(Href("#2"), Img(Src("evotalk.png"))),
-		Br(), Br(), Br(),
-		Span("Gregory Vinčić, 2023"),
-		Br(), Br(), Br(),
 	)
 
 	d.Slide(
-		H2("Story"),
+		H2("A story of change..."),
 
 		P(`From the simplest "func main" to a large service. What
         choices to consider when your project grows and how to keep it
@@ -65,11 +65,11 @@ func Presentation() *Deck {
 	)
 
 	d.Slide(
-		H2("You code along.."),
+		H2("You code along..."),
 
-		P(`This is a starting point; you have no intention to share
-        any logic, the command for you alone. You are happy and code
-        along the nice feature of randomizing rebelious statements.`),
+		P(`You have no intention to share any logic, the command is
+        for you alone. You are happy and code along the nice feature
+        of randomizing rebelious statements.`),
 
 		LayoutTwoCol(
 			load("../ex/02/main.go"),
