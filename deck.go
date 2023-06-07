@@ -166,6 +166,10 @@ func DefaultTheme() *CSS {
 		"vertical-align: center",
 		"height: 10%",
 	)
+	css.Style(".slide header h2",
+		"font-size: 2em",
+		"margin-bottom: 10px",
+	)
 
 	css.Style(".slide .content",
 		// "border: 3px solid red",
