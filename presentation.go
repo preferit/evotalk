@@ -24,6 +24,11 @@ func Presentation() *Deck {
 			Span("Gregory Vinčić, 2023"),
 		),
 		A(Href("#2"), Img(Src("evotalk.png"))),
+
+		keywords(
+			"awareness",
+			"pros and cons",
+		),
 	)
 
 	d.Slide(
@@ -49,31 +54,26 @@ func Presentation() *Deck {
 	d.Slide(
 		H2("func main()"),
 
-		Table(Class("columns"),
-			Tr(
-				Td(
+		LayoutTwoCol(
 
-					P(`Let's kick off our project. We'll name it
+			P(`Let's kick off our project. We'll name it
                     "rebel" and use the repository domain
                     "github.com/preferit/rebel". We choose to create
                     a command, ie. package main. The implications for
                     our ability to evolve `),
 
-					Ol(Class("left"),
+			Ol(Class("left"),
 
-						Li(`You Cannot share any logic within it with
+				Li(`You Cannot share any logic within it with
                         others (including yourself), Go disallows the
                         import of main packages`),
 
-						Li(`API documentation is hidden when using
+				Li(`API documentation is hidden when using
                         e.g. go doc, as a result of (1)`),
-					),
-				),
-				Td(
-					shell("$ tree rebel", "ex01.tree"),
-					load("../ex/01/main.go"),
-				),
 			),
+			"----",
+			shell("$ tree rebel", "ex01.tree"),
+			load("../ex/01/main.go"),
 		),
 	)
 
