@@ -10,6 +10,14 @@ func Presentation() *Deck {
 	d := NewDeck()
 	d.Title = "Go; Design for change"
 
+	keywords := func(v ...string) *Element {
+		ul := Ul()
+		for _, v := range v {
+			ul.With(Li(v))
+		}
+		return ul
+	}
+
 	d.Slide(
 		Wrap(
 			H2("Go; Design for change"),
@@ -25,12 +33,17 @@ func Presentation() *Deck {
         choices to consider when your project grows and how to keep it
         on track for future changes.`, Br(),
 
-			`We begin with hello world and then evolve it along a story
-        path.  Along the way depending on the choices we make, the
-        <b>design</b> of our project will change. <em>I'll refer to
-        directory layout, not as structure but as design.</em>`),
+			`We begin with a small project and then evolve it.  Along
+        the way depending on the choices we make, the <b>design</b>
+        will change. <em>I'll refer to directory layout, not as
+        structure but as design.</em>`),
 
 		Img(Src("people.png")),
+
+		keywords(
+			"change related to sharing",
+			"design, not structure",
+		),
 	)
 
 	d.Slide(
