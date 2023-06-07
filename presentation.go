@@ -251,6 +251,19 @@ func Presentation() *Deck {
         decision point, but it makes it easier to evolve the rebel
         logic. It also forces you to design rebel features in such a
         way that they may be used by Lisa as well as Max.`),
+
+		P(`With this design, if Lisa came along with the same request;
+		you could easily tell her to set MinimizeRepetition to
+		true.`),
+
+		Ul(
+			Li("Lisa import ",
+				Code("import github.com/preferit/rebel"),
+			),
+			Li("Max install",
+				Code("go install github.com/preferit/rebel/cmd/rebel@latest"),
+			),
+		),
 	)
 	// ----------------------------------------
 	d.GroupEnd()
