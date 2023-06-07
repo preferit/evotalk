@@ -333,9 +333,14 @@ func DefaultTheme() *CSS {
 	css.Style("ul.left, ol.left",
 		"text-align: left",
 	)
+	// ----------------------------------------
+	// specific
 	css.Style(".deadend",
 		"background-color: lightyellow",
 		"font-style: bold",
+	)
+	css.Style(".summary",
+		"font-size: 1.4em",
 	)
 	return css
 }

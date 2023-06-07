@@ -178,6 +178,9 @@ text-align: left;
 background-color: lightyellow;
 font-style: bold;
 }
+.summary {
+font-size: 1.4em;
+}
 .keyword {
 color: darkviolet;
 }
@@ -1979,13 +1982,23 @@ Add to a sub package<pre class="shell dark">$ tree rebel<br/>rebel
 </div>
 <div class="slide" id="23"><header><h2>Final thoughts</h2>
 </header>
-<div class="content"><p>The design for change requires awareness of where we might
+<div class="content"><table class="layout twocol">
+<tr><td><p>The design for change requires awareness of where we might
 		end up in the future and selecting a route that enables it as
 		frictionless as possible. Ie. if we'd selected <a href="#17">option 4</a> when
 		adding the service, the move at the end would have been even
 		easier at the expense of mixing service logic with command
 		logic. Depending on the service this may be a good tradeof.</p>
-<img src="rebelsrvok.png"/></div>
+<img src="rebelsrvok.png"/></td><td><h2>Summary</h2>
+<ul class="summary">
+<li>Keep domain logic in root</li>
+<li>Expose minimal API for your stakeholders</li>
+<li>Be aware of the domain</li>
+<li>Only import internal packages from parent</li>
+</ul>
+</td></tr>
+</table>
+</div>
 <nav><ul>
 <li><a href="#1">1</a></li>
 <li><a href="#2">2</a></li>
