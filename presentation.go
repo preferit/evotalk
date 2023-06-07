@@ -27,12 +27,13 @@ func Presentation() *Deck {
 
 		keywords(
 			"awareness",
+			"change related to sharing",
 			"pros and cons",
 		),
 	)
 
 	d.Slide(
-		H2("A story of change..."),
+		H2("A story"),
 
 		P(`From the simplest "func main" to a large service. What
         choices to consider when your project grows and how to keep it
@@ -46,8 +47,8 @@ func Presentation() *Deck {
 		Img(Src("people.png")),
 
 		keywords(
-			"change related to sharing",
 			"design, not structure",
+			"focus on package depencencies",
 		),
 	)
 
@@ -59,7 +60,7 @@ func Presentation() *Deck {
 			P(`Let's kick off our project. We'll name it
                     "rebel" and use the repository domain
                     "github.com/preferit/rebel". We choose to create
-                    a command, ie. package main. The implications for
+                    a <em>command</em>, ie. package main. The implications for
                     our ability to evolve `),
 
 			Ol(Class("left"),
@@ -119,7 +120,7 @@ func Presentation() *Deck {
 			),
 
 			P(`The first and second option will both require some
-               effort. As the consumers are your friiends the first
+               effort. As the consumers are your friends the first
                seems more fitting and much easier to do. The third
                option, though viable, does not help this presentation
                :-).`),
@@ -156,16 +157,6 @@ func Presentation() *Deck {
 			load("../ex/04/main.go"),
 			"----",
 			load("../ex/04/phrase/phrase.go"),
-		),
-	)
-
-	d.Slide(
-		H2("Fix the repetition when used as a command"),
-
-		LayoutTwoCol(
-			shell("$ tree rebel", "ex05.tree"),
-			load("../ex/05/main.go"),
-			"----",
 			P(`What are the implications of our current design?`),
 
 			Ul(
@@ -176,6 +167,13 @@ func Presentation() *Deck {
 					Code("go install github.com/preferit/rebel@latest"),
 				),
 			),
+		),
+	)
+
+	d.Slide(
+		H2("Minimize repetition"),
+
+		LayoutTwoCol(
 
 			P(`It feels ok, current needs are met. You and Max quickly
             notice that the same phrase appears over and over and add
@@ -183,6 +181,8 @@ func Presentation() *Deck {
             temporary file to minimize the repetition when you run
             your commands.`),
 
+			load("../ex/05/main.go"),
+			"----",
 			load("../ex/05/phrase/phrase.go"),
 		),
 	)
