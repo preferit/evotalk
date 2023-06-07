@@ -190,14 +190,15 @@ func Presentation() *Deck {
 	d.Slide(
 		H2("The first deadend"),
 
-		P(`Some time passes and Lisas swings by your office asking if
-        you could implement something that doesn't repeat the same
-        phrase every day?  But you just did, how do you now share it
-        with Lisa?  At this point you'll realize that the initial
-        redesign with the added phrase package, may need to changed
-        and your own code updated aswell. This is one of those
+		P(`Shortly after, Lisa swings by your office asking if you
+        could implement something that doesn't repeat the same phrase
+        every day?  But you just did, how do you now share it with
+        Lisa?  At this point you'll realize that the initial redesign
+        with the added phrase package, <em class="deadend">may need to
+        change and your own code updated</em>. This is one of those
         deadends where you have to turn around and find another
         path.`),
+
 		Img(Src("firstdeadend.png")),
 		P(`We can explore ways to use the current design, e.g. put
         some caching mechanism into the phrase package, but that seems
