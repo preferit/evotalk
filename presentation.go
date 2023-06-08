@@ -348,7 +348,7 @@ func Presentation() *Deck {
 			Table(Class("columns"),
 				Tr(
 					Td(
-						H3(1),
+						H4(1),
 						"Add the service logic in existing command",
 
 						opt(1,
@@ -368,7 +368,7 @@ func Presentation() *Deck {
 						),
 					),
 					Td(
-						H3(2),
+						H4(2),
 						"Add the service logic in package rebel",
 						opt(2,
 							Wrap(
@@ -386,7 +386,7 @@ func Presentation() *Deck {
 						),
 					),
 					Td(
-						H3(3),
+						H4(3),
 						"Add the service logic in package rebel/service",
 						opt(3,
 							Wrap(
@@ -404,7 +404,7 @@ func Presentation() *Deck {
 						),
 					),
 					Td(
-						H3(4),
+						H4(4),
 						"New command only",
 						opt(4,
 							Wrap(
@@ -423,7 +423,7 @@ func Presentation() *Deck {
 						),
 					),
 					Td(
-						H3(5),
+						H4(5),
 						"Combine option 3 and 4",
 						opt(5,
 							Wrap(
@@ -465,9 +465,13 @@ func Presentation() *Deck {
 		fits in the rebel package directly but will be used by
 		it. Let's call the feature crawl, but where to put it?`),
 
+			keywords(
+				"potential unrelated feature",
+			),
+
 			Table(Class("columns"), Tr(
 				Td(
-					H3(1),
+					H4(1),
 					"Add it directly in package rebel",
 					opt(1,
 						Wrap(
@@ -485,7 +489,7 @@ func Presentation() *Deck {
 				),
 
 				Td(
-					H3(3),
+					H4(3),
 					"Add to a sub package",
 					opt(3,
 						Wrap(
@@ -503,7 +507,7 @@ func Presentation() *Deck {
 				),
 
 				Td(
-					H3(2),
+					H4(2),
 					"Add it to an internal/crawl package",
 					opt(2,
 						Wrap(
