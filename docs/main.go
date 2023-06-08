@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.schneider-electric.com/SESA712749/evotalk"
+	"github.com/preferit/evotalk"
 )
 
 func main() {
