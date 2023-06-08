@@ -303,9 +303,15 @@ func Presentation() *Deck {
 			Li("Lisa import ",
 				Code("import github.com/preferit/rebel"),
 			),
-			Li("Max install",
+			Li("Max install ",
 				Code("go install github.com/preferit/rebel/cmd/rebel@latest"),
 			),
+		),
+
+		P(A(Href("#7"), "compare #7")),
+
+		keywords(
+			"compare",
 		),
 	)
 	// ----------------------------------------
