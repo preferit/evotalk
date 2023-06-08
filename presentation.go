@@ -78,6 +78,8 @@ func Presentation() *Deck {
 				Li(`API documentation is hidden when using
                         e.g. go doc, as a result of (1)`),
 			),
+			Br(), Br(),
+			Img(Src("rebel_cmd_godoc.png")),
 		),
 	)
 
