@@ -142,6 +142,7 @@ func (b *navbar) next() *Element {
 
 // ----------------------------------------
 // styling
+
 func DefaultTheme() *CSS {
 	css := NewCSS()
 	css.Import("https://fonts.googleapis.com/css?family=Inconsolata|Source+Sans+Pro")

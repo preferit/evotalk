@@ -1,4 +1,4 @@
-module github.schneider-electric.com/SESA712749/evotalk
+module github.com/preferit/evotalk
 
 go 1.20
 
