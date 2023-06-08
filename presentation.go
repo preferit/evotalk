@@ -100,6 +100,8 @@ func Presentation() *Deck {
 		),
 	)
 
+	d.GroupEnd()
+
 	d.Slide(
 		H2("Share with friends"),
 
