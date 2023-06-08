@@ -1632,9 +1632,9 @@ Combine option 3 and 4<pre class="shell dark">$ tree rebel<br/>rebel
 		it. Let's call the feature crawl, but where to put it?</p>
 <table class="columns">
 <tr><td><h3>1</h3>
-Add it directly in package rebel</td><td><h3>2</h3>
-Add it to an internal/crawl package</td><td><h3>3</h3>
-Add to a sub package</td></tr>
+Add it directly in package rebel</td><td><h3>3</h3>
+Add to a sub package</td><td><h3>2</h3>
+Add it to an internal/crawl package</td></tr>
 </table>
 </div>
 <nav><ul>
@@ -1700,9 +1700,9 @@ Add it directly in package rebel<pre class="shell dark">$ tree rebel<br/>rebel
 <ul>
 <li>Tightly coupled with the rebel domain logic</li>
 </ul>
-</td><td><h3>2</h3>
-Add it to an internal/crawl package</td><td><h3>3</h3>
-Add to a sub package</td></tr>
+</td><td><h3>3</h3>
+Add to a sub package</td><td><h3>2</h3>
+Add it to an internal/crawl package</td></tr>
 </table>
 </div>
 <nav><ul>
@@ -1768,7 +1768,8 @@ Add it directly in package rebel<pre class="shell dark">$ tree rebel<br/>rebel
 <ul>
 <li>Tightly coupled with the rebel domain logic</li>
 </ul>
-</td><td><h3>2</h3>
+</td><td><h3>3</h3>
+Add to a sub package</td><td><h3>2</h3>
 Add it to an internal/crawl package<pre class="shell dark">$ tree rebel<br/>rebel
 ├── cmd
 │   ├── rebel
@@ -1795,8 +1796,7 @@ Add it to an internal/crawl package<pre class="shell dark">$ tree rebel<br/>rebe
 <ul>
 <li>Can be imported by packages within this modules that you might want to move</li>
 </ul>
-</td><td><h3>3</h3>
-Add to a sub package</td></tr>
+<b>Let's go with this option</b></td></tr>
 </table>
 </div>
 <nav><ul>
@@ -1862,6 +1862,31 @@ Add it directly in package rebel<pre class="shell dark">$ tree rebel<br/>rebel
 <ul>
 <li>Tightly coupled with the rebel domain logic</li>
 </ul>
+</td><td><h3>3</h3>
+Add to a sub package<pre class="shell dark">$ tree rebel<br/>rebel
+├── cmd
+│   ├── rebel
+│   │   └── main.go
+│   └── rebelsrv
+│       └── main.go
+├── crawl
+│   └── crawl.go
+├── go.mod
+├── phrase.go
+├── rebel.go
+├── rebel_test.go
+└── service
+    └── service.go
+
+5 directories, 8 files
+</pre><h4>Pros</h4>
+<ul>
+<li>Decoupled from domain logic</li>
+</ul>
+<h4>Cons</h4>
+<ul>
+<li>You immediately need to be aware of it being importable</li>
+</ul>
 </td><td><h3>2</h3>
 Add it to an internal/crawl package<pre class="shell dark">$ tree rebel<br/>rebel
 ├── cmd
@@ -1889,32 +1914,7 @@ Add it to an internal/crawl package<pre class="shell dark">$ tree rebel<br/>rebe
 <ul>
 <li>Can be imported by packages within this modules that you might want to move</li>
 </ul>
-</td><td><h3>3</h3>
-Add to a sub package<pre class="shell dark">$ tree rebel<br/>rebel
-├── cmd
-│   ├── rebel
-│   │   └── main.go
-│   └── rebelsrv
-│       └── main.go
-├── crawl
-│   └── crawl.go
-├── go.mod
-├── phrase.go
-├── rebel.go
-├── rebel_test.go
-└── service
-    └── service.go
-
-5 directories, 8 files
-</pre><h4>Pros</h4>
-<ul>
-<li>Decoupled from domain logic</li>
-</ul>
-<h4>Cons</h4>
-<ul>
-<li>You immediately need to be aware of it being importable</li>
-</ul>
-</td></tr>
+<b>Let's go with this option</b></td></tr>
 </table>
 </div>
 <nav><ul>
@@ -1958,7 +1958,7 @@ Add to a sub package<pre class="shell dark">$ tree rebel<br/>rebel
 		split the service into it's own. The latter is what we're
 		interested in. </p>
 <table class="columns">
-<tr><td><b>Let's go with option 2</b><pre class="shell dark">$ tree rebel<br/>rebel
+<tr><td><pre class="shell dark">$ tree rebel<br/>rebel
 ├── cmd
 │   ├── rebel
 │   │   └── main.go

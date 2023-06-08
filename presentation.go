@@ -428,24 +428,7 @@ func Presentation() *Deck {
 						),
 					),
 				),
-				Td(
-					H3(2),
-					"Add it to an internal/crawl package",
-					opt(2,
-						Wrap(
-							shell("$ tree rebel", "ex08_2.tree"),
-							H4("Pros"),
-							Ul(
-								Li("Separated from domain logic"),
-								Li("Cannot be imported by modules outside of the rebel module"),
-							),
-							H4("Cons"),
-							Ul(
-								Li("Can be imported by packages within this modules that you might want to move"),
-							),
-						),
-					),
-				),
+
 				Td(
 					H3(3),
 					"Add to a sub package",
@@ -462,7 +445,28 @@ func Presentation() *Deck {
 							),
 						),
 					),
-				)), // end TR
+				),
+
+				Td(
+					H3(2),
+					"Add it to an internal/crawl package",
+					opt(2,
+						Wrap(
+							shell("$ tree rebel", "ex08_2.tree"),
+							H4("Pros"),
+							Ul(
+								Li("Separated from domain logic"),
+								Li("Cannot be imported by modules outside of the rebel module"),
+							),
+							H4("Cons"),
+							Ul(
+								Li("Can be imported by packages within this modules that you might want to move"),
+							),
+							B("Let's go with this option"),
+						),
+					),
+				),
+			), // end TR
 			),
 		)
 	}
@@ -489,7 +493,6 @@ func Presentation() *Deck {
 		Table(Class("columns"),
 			Tr(
 				Td(
-					B("Let's go with option 2"),
 					shell("$ tree rebel", "ex08_2.tree"),
 				),
 				Td(
