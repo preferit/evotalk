@@ -373,6 +373,13 @@ func DefaultTheme() *CSS {
 	css.Style("h3",
 		"text-align: left",
 	)
+	css.Style(".keywords",
+		"border: 3px double #727272",
+		"position: fixed",
+		"bottom: 0px",
+		"right: 20px",
+		"padding: 1em 2em",
+	)
 	return css
 }
 

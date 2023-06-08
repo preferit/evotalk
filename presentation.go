@@ -11,7 +11,7 @@ func Presentation() *Deck {
 	d.Title = "Go; Design for change"
 
 	keywords := func(v ...string) *Element {
-		ul := Ul()
+		ul := Ul(Class("keywords"))
 		for _, v := range v {
 			ul.With(Li(v))
 		}
@@ -215,6 +215,12 @@ func Presentation() *Deck {
         backtrack to the time where Max and Lisa came onboard, could
         we have taken a different route that would avoid this
         scenario?`),
+
+		keywords(
+			"rework",
+			"out of place",
+			"backtrack",
+		),
 	)
 
 	d.Slide(
