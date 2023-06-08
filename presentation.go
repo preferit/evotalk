@@ -57,24 +57,27 @@ func Presentation() *Deck {
 
 		LayoutTwoCol(
 
+			shell("$ tree rebel", "ex01.tree"),
+			load("../ex/01/main.go"),
+			"----",
 			P(`Let's kick off our project. We'll name it
                     "rebel" and use the repository domain
                     "github.com/preferit/rebel". We choose to create
                     a <em>command</em>, ie. package main. The implications for
                     our ability to evolve `),
 
-			Ol(Class("left"),
-
+			H3("Pros"),
+			Ul(
+				Li(`Easy to share command with `, Code(`go install github.com/preferit/rebel@latest`)),
+			),
+			H3("Cons"),
+			Ul(
 				Li(`You Cannot share any logic within it with
                         others (including yourself), Go disallows the
                         import of main packages`),
-
 				Li(`API documentation is hidden when using
                         e.g. go doc, as a result of (1)`),
 			),
-			"----",
-			shell("$ tree rebel", "ex01.tree"),
-			load("../ex/01/main.go"),
 		),
 	)
 

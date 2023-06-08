@@ -370,6 +370,9 @@ func DefaultTheme() *CSS {
 	css.Style(".summary",
 		"font-size: 1.4em",
 	)
+	css.Style("h3",
+		"text-align: left",
+	)
 	return css
 }
 
