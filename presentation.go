@@ -577,6 +577,8 @@ func Presentation() *Deck {
 		logic. Depending on the service this may be a good tradeof.`),
 
 		Img(Src("rebelsrvok.png")),
+
+		P(`You see these layerd packages e.g. net/http and encoding/json`),
 	)
 
 	d.Slide(
