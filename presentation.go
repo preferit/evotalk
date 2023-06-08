@@ -467,6 +467,7 @@ func Presentation() *Deck {
 
 			keywords(
 				"potential unrelated feature",
+				"internal",
 			),
 
 			Table(Class("columns"), Tr(
@@ -489,9 +490,9 @@ func Presentation() *Deck {
 				),
 
 				Td(
-					H4(3),
+					H4(2),
 					"Add to a sub package",
-					opt(3,
+					opt(2,
 						Wrap(
 							shell("$ tree rebel", "ex08_3.tree"),
 							H4("Pros"),
@@ -507,9 +508,9 @@ func Presentation() *Deck {
 				),
 
 				Td(
-					H4(2),
+					H4(3),
 					"Add it to an internal/crawl package",
-					opt(2,
+					opt(3,
 						Wrap(
 							shell("$ tree rebel", "ex08_2.tree"),
 							H4("Pros"),

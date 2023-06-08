@@ -1730,11 +1730,12 @@ Combine option 3 and 4<pre class="shell dark">$ tree rebel<br/>rebel
 		it. Let's call the feature crawl, but where to put it?</p>
 <ul class="keywords">
 <li>potential unrelated feature</li>
+<li>internal</li>
 </ul>
 <table class="columns">
 <tr><td><h4>1</h4>
-Add it directly in package rebel</td><td><h4>3</h4>
-Add to a sub package</td><td><h4>2</h4>
+Add it directly in package rebel</td><td><h4>2</h4>
+Add to a sub package</td><td><h4>3</h4>
 Add it to an internal/crawl package</td></tr>
 </table>
 </div>
@@ -1779,6 +1780,7 @@ Add it to an internal/crawl package</td></tr>
 		it. Let's call the feature crawl, but where to put it?</p>
 <ul class="keywords">
 <li>potential unrelated feature</li>
+<li>internal</li>
 </ul>
 <table class="columns">
 <tr><td><h4>1</h4>
@@ -1805,8 +1807,8 @@ Add it directly in package rebel<pre class="shell dark">$ tree rebel<br/>rebel
 <ul>
 <li>Tightly coupled with the rebel domain logic</li>
 </ul>
-</td><td><h4>3</h4>
-Add to a sub package</td><td><h4>2</h4>
+</td><td><h4>2</h4>
+Add to a sub package</td><td><h4>3</h4>
 Add it to an internal/crawl package</td></tr>
 </table>
 </div>
@@ -1851,6 +1853,7 @@ Add it to an internal/crawl package</td></tr>
 		it. Let's call the feature crawl, but where to put it?</p>
 <ul class="keywords">
 <li>potential unrelated feature</li>
+<li>internal</li>
 </ul>
 <table class="columns">
 <tr><td><h4>1</h4>
@@ -1877,35 +1880,33 @@ Add it directly in package rebel<pre class="shell dark">$ tree rebel<br/>rebel
 <ul>
 <li>Tightly coupled with the rebel domain logic</li>
 </ul>
-</td><td><h4>3</h4>
-Add to a sub package</td><td><h4>2</h4>
-Add it to an internal/crawl package<pre class="shell dark">$ tree rebel<br/>rebel
+</td><td><h4>2</h4>
+Add to a sub package<pre class="shell dark">$ tree rebel<br/>rebel
 ├── cmd
 │   ├── rebel
 │   │   └── main.go
 │   └── rebelsrv
 │       └── main.go
+├── crawl
+│   └── crawl.go
 ├── go.mod
-├── internal
-│   └── crawl
-│       └── crawl.go
 ├── phrase.go
 ├── rebel.go
 ├── rebel_test.go
 └── service
     └── service.go
 
-6 directories, 8 files
+5 directories, 8 files
 </pre><h4>Pros</h4>
 <ul>
-<li>Separated from domain logic</li>
-<li>Cannot be imported by modules outside of the rebel module</li>
+<li>Decoupled from domain logic</li>
 </ul>
 <h4>Cons</h4>
 <ul>
-<li>Can be imported by packages within this modules that you might want to move</li>
+<li>You immediately need to be aware of it being importable</li>
 </ul>
-<b>Let's go with this option</b></td></tr>
+</td><td><h4>3</h4>
+Add it to an internal/crawl package</td></tr>
 </table>
 </div>
 <nav><ul>
@@ -1949,6 +1950,7 @@ Add it to an internal/crawl package<pre class="shell dark">$ tree rebel<br/>rebe
 		it. Let's call the feature crawl, but where to put it?</p>
 <ul class="keywords">
 <li>potential unrelated feature</li>
+<li>internal</li>
 </ul>
 <table class="columns">
 <tr><td><h4>1</h4>
@@ -1975,7 +1977,7 @@ Add it directly in package rebel<pre class="shell dark">$ tree rebel<br/>rebel
 <ul>
 <li>Tightly coupled with the rebel domain logic</li>
 </ul>
-</td><td><h4>3</h4>
+</td><td><h4>2</h4>
 Add to a sub package<pre class="shell dark">$ tree rebel<br/>rebel
 ├── cmd
 │   ├── rebel
@@ -2000,7 +2002,7 @@ Add to a sub package<pre class="shell dark">$ tree rebel<br/>rebel
 <ul>
 <li>You immediately need to be aware of it being importable</li>
 </ul>
-</td><td><h4>2</h4>
+</td><td><h4>3</h4>
 Add it to an internal/crawl package<pre class="shell dark">$ tree rebel<br/>rebel
 ├── cmd
 │   ├── rebel
