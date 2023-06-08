@@ -339,6 +339,12 @@ func Presentation() *Deck {
         service that exposes it?<br> Easy peasy, but where to put it?
         we a few choices`),
 
+			keywords(
+				"switch language",
+				"easy service",
+				"but where?",
+			),
+
 			Table(Class("columns"),
 				Tr(
 					Td(
