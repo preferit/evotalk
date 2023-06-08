@@ -27,6 +27,7 @@ func Presentation() *Deck {
 
 		keywords(
 			"awareness",
+			"change is inevitable",
 			"change related to sharing",
 			"pros and cons",
 		),
@@ -47,6 +48,7 @@ func Presentation() *Deck {
 		Img(Src("people.png")),
 
 		keywords(
+			"growth story",
 			"design, not structure",
 			"focus on package depencencies",
 		),
@@ -81,6 +83,9 @@ func Presentation() *Deck {
 			Br(), Br(),
 			Img(Src("rebel_cmd_godoc.png")),
 		),
+		keywords(
+			"rebel command",
+		),
 	)
 
 	d.Slide(
@@ -97,6 +102,10 @@ func Presentation() *Deck {
 
 			P(`At this point your coworkers Max and Lisa see the work
             and you end up in a discussion;`),
+		),
+		keywords(
+			"rebel logic grows",
+			"first share",
 		),
 	)
 
@@ -120,9 +129,9 @@ func Presentation() *Deck {
 			P(`Here you are faced with a decision on how to share the
             logic of generating a random rebelious statement.`),
 
-			Ol(
-				Li(`Redesign the logic as an importable package or`),
-				Li(`Write a small service with an API.`),
+			Ol(Class("left"),
+				Li(`Redesign the logic as an importable package`),
+				Li(`Write a small service with an API`),
 				Li(`Share the data only and let them figure it out`),
 			),
 
@@ -131,6 +140,8 @@ func Presentation() *Deck {
                seems more fitting and much easier to do. The third
                option, though viable, does not help this presentation
                :-).`),
+
+			B("You go for option no. 1"),
 		),
 	)
 
@@ -147,6 +158,10 @@ func Presentation() *Deck {
 			load("../ex/03/main.go"),
 			"----",
 			load("../ex/03/phrase/phrase.go"),
+		),
+		keywords(
+			"how to move",
+			"first attempt",
 		),
 	)
 
@@ -167,13 +182,17 @@ func Presentation() *Deck {
 			P(`What are the implications of our current design?`),
 
 			Ul(
-				Li("Lisa can import it with ",
+				Li("Lisa can import ",
 					Code("import github.com/preferit/rebel/phrase"),
 				),
-				Li("Max can install it simply with ",
+				Li("Max can install ",
 					Code("go install github.com/preferit/rebel@latest"),
 				),
 			),
+		),
+		keywords(
+			"multiple stakeholders",
+			"simplify for export",
 		),
 	)
 
@@ -191,6 +210,9 @@ func Presentation() *Deck {
 			load("../ex/05/main.go"),
 			"----",
 			load("../ex/05/phrase/phrase.go"),
+		),
+		keywords(
+			"one stakeholder feature",
 		),
 	)
 
@@ -217,9 +239,10 @@ func Presentation() *Deck {
         scenario?`),
 
 		keywords(
-			"rework",
+			"double stakeholder feature",
+			"rework?",
 			"out of place",
-			"backtrack",
+			"backtrack...",
 		),
 	)
 
@@ -249,6 +272,13 @@ func Presentation() *Deck {
 		),
 
 		B(`Move command, keep domain logic.`),
+
+		keywords(
+			"reasoning",
+			"who saw the problem",
+			"phrases don't shout",
+			"how to keep and share?",
+		),
 	)
 
 	d.Slide(

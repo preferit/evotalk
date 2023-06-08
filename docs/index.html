@@ -214,6 +214,7 @@ color: darkgreen;
 <span>Gregory Vinčić, 2023</span></header>
 <div class="content"><a href="#2"><img src="evotalk.png"/></a><ul class="keywords">
 <li>awareness</li>
+<li>change is inevitable</li>
 <li>change related to sharing</li>
 <li>pros and cons</li>
 </ul>
@@ -259,6 +260,7 @@ color: darkgreen;
         will change. <em>I'll refer to directory layout, not as
         structure but as design.</em></p>
 <img src="people.png"/><ul class="keywords">
+<li>growth story</li>
 <li>design, not structure</li>
 <li>focus on package depencencies</li>
 </ul>
@@ -336,6 +338,9 @@ color: darkgreen;
 </ul>
 <br/><br/><img src="rebel_cmd_godoc.png"/></td></tr>
 </table>
+<ul class="keywords">
+<li>rebel command</li>
+</ul>
 </div>
 <nav><ul>
 <li><a href="#1">1</a></li>
@@ -416,6 +421,10 @@ color: darkgreen;
             and you end up in a discussion;</p>
 </td></tr>
 </table>
+<ul class="keywords">
+<li>rebel logic grows</li>
+<li>first share</li>
+</ul>
 </div>
 <nav><ul>
 <li><a href="#1">1</a></li>
@@ -460,9 +469,9 @@ color: darkgreen;
 - You:  Not really; you could use the binary, but it would be slow with all the
         traffic we have</pre><p>Here you are faced with a decision on how to share the
             logic of generating a random rebelious statement.</p>
-<ol>
-<li>Redesign the logic as an importable package or</li>
-<li>Write a small service with an API.</li>
+<ol class="left">
+<li>Redesign the logic as an importable package</li>
+<li>Write a small service with an API</li>
 <li>Share the data only and let them figure it out</li>
 </ol>
 <p>The first and second option will both require some
@@ -470,7 +479,7 @@ color: darkgreen;
                seems more fitting and much easier to do. The third
                option, though viable, does not help this presentation
                :-).</p>
-</td></tr>
+<b>You go for option no. 1</b></td></tr>
 </table>
 </div>
 <nav><ul>
@@ -562,6 +571,10 @@ color: darkgreen;
 <span class=line><i> 28</i> </span></code></pre></div>
 </td></tr>
 </table>
+<ul class="keywords">
+<li>how to move</li>
+<li>first attempt</li>
+</ul>
 </div>
 <nav><ul>
 <li><a href="#1">1</a></li>
@@ -656,11 +669,15 @@ color: darkgreen;
 <span class=line><i> 28</i> </span></code></pre></div>
 <p>What are the implications of our current design?</p>
 <ul>
-<li>Lisa can import it with <code>import github.com/preferit/rebel/phrase</code></li>
-<li>Max can install it simply with <code>go install github.com/preferit/rebel@latest</code></li>
+<li>Lisa can import <code>import github.com/preferit/rebel/phrase</code></li>
+<li>Max can install <code>go install github.com/preferit/rebel@latest</code></li>
 </ul>
 </td></tr>
 </table>
+<ul class="keywords">
+<li>multiple stakeholders</li>
+<li>simplify for export</li>
+</ul>
 </div>
 <nav><ul>
 <li><a href="#1">1</a></li>
@@ -762,6 +779,9 @@ color: darkgreen;
 <span class=line><i> 28</i> </span></code></pre></div>
 </td></tr>
 </table>
+<ul class="keywords">
+<li>one stakeholder feature</li>
+</ul>
 </div>
 <nav><ul>
 <li><a href="#1">1</a></li>
@@ -814,9 +834,10 @@ color: darkgreen;
         we have taken a different route that would avoid this
         scenario?</p>
 <ul class="keywords">
-<li>rework</li>
+<li>double stakeholder feature</li>
+<li>rework?</li>
 <li>out of place</li>
-<li>backtrack</li>
+<li>backtrack...</li>
 </ul>
 </div>
 <nav><ul>
@@ -920,7 +941,13 @@ color: darkgreen;
 <span class=line><i> 28</i> </span></code></pre></div>
 </td></tr>
 </table>
-<b>Move command, keep domain logic.</b></div>
+<b>Move command, keep domain logic.</b><ul class="keywords">
+<li>reasoning</li>
+<li>who saw the problem</li>
+<li>phrases don't shout</li>
+<li>how to keep and share?</li>
+</ul>
+</div>
 <nav><ul>
 <li><a href="#1">1</a></li>
 <li><a href="#2">2</a></li>
