@@ -518,12 +518,16 @@ func Presentation() *Deck {
 
 	d.Slide(
 		H2("Final thoughts"),
-		Ul(Class("summary"),
-			Li("Keep domain logic in root"),
-			Li("Add exposing layers ABOVE the domain layer"),
-			Li("Expose minimal API for your stakeholders"),
-			Li("Add internal technical layers BELOW in internal/"),
-			Li("Only import internal packages from parent"),
+		LayoutThreeCol(
+			"----",
+			Ul(Class("summary"),
+				Li("Keep domain logic in root"),
+				Li("Add exposing layers ABOVE the domain layer"),
+				Li("Expose minimal API for your stakeholders"),
+				Li("Add internal technical layers BELOW in internal/"),
+				Li("Only import internal packages from parent"),
+			),
+			"----",
 		),
 	)
 

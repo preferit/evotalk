@@ -99,6 +99,26 @@ func LayoutTwoCol(v ...interface{}) *Element {
 	return Table(Class("layout twocol"), tr)
 }
 
+func LayoutThreeCol(v ...interface{}) *Element {
+	tr := Tr()
+	td := Td()
+	for _, v := range v {
+		switch v := v.(type) {
+		case string:
+			if v == "----" {
+				tr.With(td)
+				td = Td()
+			} else {
+				td.With(v)
+			}
+		default:
+			td.With(v)
+		}
+	}
+	tr.With(td)
+	return Table(Class("layout threecol"), tr)
+}
+
 // ----------------------------------------
 // navbar
 
@@ -190,6 +210,9 @@ func DefaultTheme() *CSS {
 	)
 	css.Style(".twocol tr td",
 		"width: 50%",
+	)
+	css.Style(".threecol tr td",
+		"width: 33%",
 	)
 
 	// ----------------------------------------
